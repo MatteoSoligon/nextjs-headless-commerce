@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+/* ========================================
+   BREAKPOINTS
+   ======================================== */
+@theme inline {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* ========================================
+   BASE THEME (Default - Light)
+   ======================================== */
+:root {
+  /* ======== MASTER SCALE CONTROL ======== */
+  /* Change this ONE value to scale the entire UI */
+  --scale: 1;
+  
+  /* ======== SPACING SCALE (rem-based) ======== */
+  --space-xs: calc(0.25rem * var(--scale));   /* 4px  at scale 1 */
+  --space-sm: calc(0.5rem * var(--scale));    /* 8px  at scale 1 */
+  --space-md: calc(1rem * var(--scale));      /* 16px at scale 1 */
+  --space-lg: calc(1.5rem * var(--scale));    /* 24px at scale 1 */
+  --space-xl: calc(2rem * var(--scale));      /* 32px at scale 1 */
+  --space-2xl: calc(3rem * var(--scale));     /* 48px at scale 1 */
+  --space-3xl: calc(4rem * var(--scale));     /* 64px at scale 1 */
+  
+  /* ======== TYPOGRAPHY SCALE (rem-based) ======== */
+  --text-xs: calc(0.75rem * var(--scale));    /* 12px at scale 1 */
+  --text-sm: calc(0.875rem * var(--scale));   /* 14px at scale 1 */
+  --text-base: calc(1rem * var(--scale));     /* 16px at scale 1 */
+  --text-lg: calc(1.125rem * var(--scale));   /* 18px at scale 1 */
+  --text-xl: calc(1.25rem * var(--scale));    /* 20px at scale 1 */
+  --text-2xl: calc(1.5rem * var(--scale));    /* 24px at scale 1 */
+  --text-3xl: calc(1.875rem * var(--scale));  /* 30px at scale 1 */
+  --text-4xl: calc(2.25rem * var(--scale));   /* 36px at scale 1 */
+  --text-5xl: calc(3rem * var(--scale));      /* 48px at scale 1 */
+  
+  /* ======== BORDER RADIUS (rem-based) ======== */
+  --radius-sm: calc(0.125rem * var(--scale)); /* 2px  at scale 1 */
+  --radius-md: calc(0.375rem * var(--scale)); /* 6px  at scale 1 */
+  --radius-lg: calc(0.5rem * var(--scale));   /* 8px  at scale 1 */
+  --radius-xl: calc(0.75rem * var(--scale));  /* 12px at scale 1 */
+  --radius-2xl: calc(1rem * var(--scale));    /* 16px at scale 1 */
+  --radius-full: 9999px;
+  
+  /* ======== COLORS ======== */
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary: #3b82f6;
+  --secondary: #64748b;
+  --accent: #f59e0b;
+}
+
+/* ========================================
+   THEME VARIANTS
+   Wrap pages/sections with these classes
+   ======================================== */
+
+/* Theme A - Brand A */
+.theme-brand-a {
+  --background: #fef3c7;
+  --foreground: #78350f;
+  --primary: #d97706;
+  --secondary: #92400e;
+  --accent: #fbbf24;
+}
+
+/* Theme B - Brand B */
+.theme-brand-b {
+  --background: #ede9fe;
+  --foreground: #4c1d95;
+  --primary: #7c3aed;
+  --secondary: #6d28d9;
+  --accent: #a78bfa;
+}
+
+/* ========================================
+   DARK MODE VARIANTS
+   ======================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --primary: #60a5fa;
+    --secondary: #94a3b8;
+    --accent: #fbbf24;
+  }
+
+  .theme-brand-a {
+    --background: #1c1917;
+    --foreground: #fef3c7;
+    --primary: #f59e0b;
+    --secondary: #b45309;
+    --accent: #fcd34d;
+  }
+
+  .theme-brand-b {
+    --background: #1e1b4b;
+    --foreground: #ede9fe;
+    --primary: #a78bfa;
+    --secondary: #8b5cf6;
+    --accent: #c4b5fd;
+  }
+}
+
+/* ========================================
+   TAILWIND v4 THEME REGISTRATION
+   ======================================== */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+
+  /* Register font sizes */
+  --font-size-xs: var(--text-xs);
+  --font-size-sm: var(--text-sm);
+  --font-size-base: var(--text-base);
+  --font-size-lg: var(--text-lg);
+  --font-size-xl: var(--text-xl);
+  --font-size-2xl: var(--text-2xl);
+  --font-size-3xl: var(--text-3xl);
+  --font-size-4xl: var(--text-4xl);
+  --font-size-5xl: var(--text-5xl);
+  
+  /* Register border radius */
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-full: var(--radius-full);
+}
+
+/* ========================================
+   RESPONSIVE SCALE ADJUSTMENTS
+   Scale the entire UI based on viewport
+   ======================================== */
+@media (max-width: 640px) {
+  :root {
+    --scale: 0.875; /* Slightly smaller on mobile */
+  }
+}
+
+@media (min-width: 1536px) {
+  :root {
+    --scale: 2; /* Slightly larger on big screens */
+  }
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
