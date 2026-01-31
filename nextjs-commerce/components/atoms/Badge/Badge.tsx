@@ -16,19 +16,19 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-[var(--foreground)]/10 text-[var(--foreground)]",
-        primary: "bg-[var(--primary)] text-white",
-        secondary: "bg-[var(--secondary)] text-white",
-        accent: "bg-[var(--accent)] text-[var(--foreground)]",
-        outline: "border border-[var(--foreground)]/30 text-[var(--foreground)] bg-transparent",
-        success: "bg-green-100 text-green-800",
-        warning: "bg-yellow-100 text-yellow-800",
-        error: "bg-red-100 text-red-800",
+        default: "bg-foreground/10 text-foreground",
+        primary: "bg-primary text-foreground",
+        secondary: "bg-secondary text-foreground",
+        accent: "bg-accent text-foreground",
+        outline: "border border-foreground/30 text-foreground bg-transparent",
+        success: "bg-success text-foreground",
+        warning: "bg-warning text-foreground",
+        error: "bg-destructive text-foreground",
       },
       size: {
-        sm: "h-5 px-2 text-[var(--text-xs)] rounded-[var(--radius-sm)]",
-        md: "h-6 px-2.5 text-[var(--text-sm)] rounded-[var(--radius-md)]",
-        lg: "h-7 px-3 text-[var(--text-base)] rounded-[var(--radius-md)]",
+        sm: "py-1 px-2 text-xs rounded-sm",
+        md: "py-1.5 px-2.5 text-sm rounded-md",
+        lg: "py-2 px-3 text-base rounded-md",
       },
       pill: {
         true: "rounded-full",

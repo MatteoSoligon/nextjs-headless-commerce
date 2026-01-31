@@ -11,26 +11,26 @@ import { cn } from "@/lib/utils";
 const selectTriggerVariants = cva(
   [
     "flex w-full items-center justify-between",
-    "bg-[var(--background)] text-[var(--foreground)]",
-    "border border-[var(--foreground)]/20",
+    "bg-background text-foreground",
+    "border border-foreground",
     "transition-colors duration-200",
-    "placeholder:text-[var(--foreground)]/50",
+    "placeholder:text-foreground/50",
     // Focus styles
-    "focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)]",
+    "focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary",
     // Disabled state
     "disabled:cursor-not-allowed disabled:opacity-50",
     // Invalid state
-    "aria-[invalid=true]:border-[var(--destructive)] aria-[invalid=true]:ring-[var(--destructive)]/20",
-    "data-[invalid=true]:border-[var(--destructive)] data-[invalid=true]:ring-[var(--destructive)]/20",
+    "aria-[invalid=true]:border-destructive aria-[invalid=true]:ring-destructive",
+    "data-[invalid=true]:border-destructive data-[invalid=true]:ring-destructive",
     // Icon spacing
     "[&>span]:truncate",
   ],
   {
     variants: {
       size: {
-        sm: "h-8 px-3 text-[var(--text-sm)] rounded-[var(--radius-md)]",
-        md: "h-10 px-4 text-[var(--text-base)] rounded-[var(--radius-md)]",
-        lg: "h-12 px-4 text-[var(--text-lg)] rounded-[var(--radius-lg)]",
+        sm: "py-1.5 px-3 text-sm rounded-md",
+        md: "py-2.5 px-4 text-base rounded-md",
+        lg: "py-3 px-4 text-lg rounded-lg",
       },
     },
     defaultVariants: {
@@ -149,8 +149,8 @@ const SelectContent = React.forwardRef<
       ref={ref}
       className={cn(
         "relative z-50 max-h-96 min-w-[8rem] overflow-hidden",
-        "rounded-[var(--radius-md)] border border-[var(--foreground)]/10",
-        "bg-[var(--background)] text-[var(--foreground)]",
+        "rounded-md border border-foreground/10",
+        "bg-background text-foreground",
         "shadow-md",
         // Animations
         "data-[state=open]:animate-in data-[state=closed]:animate-out",
@@ -192,7 +192,7 @@ const SelectLabel = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
-    className={cn("py-1.5 pl-8 pr-2 text-[var(--text-sm)] font-semibold", className)}
+    className={cn("py-1.5 pl-8 pr-2 text-sm font-semibold", className)}
     {...props}
   />
 ));
@@ -209,9 +209,9 @@ const SelectItem = React.forwardRef<
     ref={ref}
     className={cn(
       "relative flex w-full cursor-default select-none items-center",
-      "rounded-[var(--radius-sm)] py-1.5 pl-8 pr-2",
-      "text-[var(--text-sm)] outline-none",
-      "focus:bg-[var(--primary)]/10 focus:text-[var(--primary)]",
+      "rounded-sm py-1.5 pl-8 pr-2",
+      "text-sm outline-none",
+      "focus:bg-primary/10 focus:text-primary",
       "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       className
     )}
@@ -246,7 +246,7 @@ const SelectSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     ref={ref}
-    className={cn("-mx-1 my-1 h-px bg-[var(--foreground)]/10", className)}
+    className={cn("-mx-1 my-1 h-px bg-foreground/10", className)}
     {...props}
   />
 ));

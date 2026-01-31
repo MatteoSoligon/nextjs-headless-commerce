@@ -10,19 +10,19 @@ import { cn } from "@/lib/utils";
  */
 const labelVariants = cva(
   [
-    "text-[var(--foreground)]",
+    "text-foreground",
     "font-medium leading-none",
     "peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
   ],
   {
     variants: {
       size: {
-        sm: "text-[var(--text-sm)]",
-        md: "text-[var(--text-base)]",
-        lg: "text-[var(--text-lg)]",
+        sm: "text-sm",
+        md: "text-base",
+        lg: "text-lg",
       },
       required: {
-        true: "after:content-['*'] after:ml-0.5 after:text-red-500",
+        true: "after:content-['*'] after:ml-0.5 after:text-destructive",
       },
     },
     defaultVariants: {

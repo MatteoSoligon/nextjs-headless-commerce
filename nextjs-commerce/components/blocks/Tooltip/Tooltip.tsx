@@ -11,9 +11,9 @@ import { cn } from "@/lib/utils";
 const tooltipVariants = cva(
   [
     "z-50 overflow-hidden",
-    "rounded-[var(--radius-md)]",
+    "rounded-md",
     "px-3 py-1.5",
-    "text-[var(--text-sm)]",
+    "text-sm",
     "shadow-md",
     // Animations
     "animate-in fade-in-0 zoom-in-95",
@@ -26,10 +26,10 @@ const tooltipVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-[var(--foreground)] text-[var(--background)]",
-        primary: "bg-[var(--primary)] text-white",
-        secondary: "bg-[var(--secondary)] text-white",
-        light: "bg-[var(--background)] text-[var(--foreground)] border border-[var(--foreground)]/10",
+        default: "bg-foreground text-background",
+        primary: "bg-primary text-foreground",
+        secondary: "bg-secondary text-foreground",
+        light: "bg-background text-foreground border border-foreground/10",
       },
     },
     defaultVariants: {

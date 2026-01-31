@@ -6,18 +6,18 @@ import { cn } from "@/lib/utils";
  * Text variants using CVA
  * Supports all typography scale sizes
  */
-const textVariants = cva("text-[var(--foreground)]", {
+const textVariants = cva("text-foreground", {
   variants: {
     size: {
-      xs: "text-[var(--text-xs)]",
-      sm: "text-[var(--text-sm)]",
-      base: "text-[var(--text-base)]",
-      lg: "text-[var(--text-lg)]",
-      xl: "text-[var(--text-xl)]",
-      "2xl": "text-[var(--text-2xl)]",
-      "3xl": "text-[var(--text-3xl)]",
-      "4xl": "text-[var(--text-4xl)]",
-      "5xl": "text-[var(--text-5xl)]",
+      xs: "text-xs",
+      sm: "text-sm",
+      base: "text-base",
+      lg: "text-lg",
+      xl: "text-xl",
+      "2xl": "text-2xl",
+      "3xl": "text-3xl",
+      "4xl": "text-4xl",
+      "5xl": "text-5xl",
     },
     weight: {
       normal: "font-normal",
@@ -26,11 +26,11 @@ const textVariants = cva("text-[var(--foreground)]", {
       bold: "font-bold",
     },
     color: {
-      default: "text-[var(--foreground)]",
-      muted: "text-[var(--foreground)]/60",
-      primary: "text-[var(--primary)]",
-      secondary: "text-[var(--secondary)]",
-      accent: "text-[var(--accent)]",
+      default: "text-foreground",
+      muted: "text-foreground/60",
+      primary: "text-primary",
+      secondary: "text-secondary",
+      accent: "text-accent",
     },
     align: {
       left: "text-left",
@@ -52,22 +52,22 @@ const textVariants = cva("text-[var(--foreground)]", {
  * Heading variants
  */
 const headingVariants = cva(
-  "text-[var(--foreground)] font-bold tracking-tight",
+  "text-foreground font-bold tracking-tight",
   {
     variants: {
       level: {
-        h1: "text-[var(--text-5xl)] leading-tight",
-        h2: "text-[var(--text-4xl)] leading-tight",
-        h3: "text-[var(--text-3xl)] leading-snug",
-        h4: "text-[var(--text-2xl)] leading-snug",
-        h5: "text-[var(--text-xl)] leading-normal",
-        h6: "text-[var(--text-lg)] leading-normal",
+        h1: "text-5xl leading-tight",
+        h2: "text-4xl leading-tight",
+        h3: "text-3xl leading-snug",
+        h4: "text-2xl leading-snug",
+        h5: "text-xl leading-normal",
+        h6: "text-lg leading-normal",
       },
       color: {
-        default: "text-[var(--foreground)]",
-        primary: "text-[var(--primary)]",
-        secondary: "text-[var(--secondary)]",
-        accent: "text-[var(--accent)]",
+        default: "text-foreground",
+        primary: "text-primary",
+        secondary: "text-secondary",
+        accent: "text-accent",
       },
     },
     defaultVariants: {

@@ -15,15 +15,15 @@ const switchVariants = cva(
     "transition-colors duration-200",
     // Focus styles for accessibility
     "focus-visible:outline-none focus-visible:ring-2",
-    "focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2",
+    "focus-visible:ring-primary focus-visible:ring-offset-2",
     // Disabled state
     "disabled:cursor-not-allowed disabled:opacity-50",
     // Invalid state
-    "aria-[invalid=true]:border-[var(--destructive)] aria-[invalid=true]:ring-[var(--destructive)]/20",
-    "data-[invalid=true]:border-[var(--destructive)] data-[invalid=true]:ring-[var(--destructive)]/20",
+    "aria-[invalid=true]:border-destructive aria-[invalid=true]:ring-destructive",
+    "data-[invalid=true]:border-destructive data-[invalid=true]:ring-destructive",
     // States
-    "data-[state=unchecked]:bg-[var(--foreground)]/20",
-    "data-[state=checked]:bg-[var(--primary)]",
+    "data-[state=unchecked]:bg-foreground",
+    "data-[state=checked]:bg-primary",
   ],
   {
     variants: {

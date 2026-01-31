@@ -22,9 +22,9 @@ const overlayVariants = cva([
 const contentVariants = cva(
   [
     "fixed z-50",
-    "bg-[var(--background)] text-[var(--foreground)]",
-    "shadow-xl rounded-[var(--radius-lg)]",
-    "border border-[var(--foreground)]/10",
+    "bg-background text-foreground",
+    "shadow-xl rounded-lg",
+    "border border-foreground/10",
     // Focus trap visible styles
     "focus:outline-none",
     // Animations
@@ -45,11 +45,11 @@ const contentVariants = cva(
         ],
       },
       size: {
-        sm: "w-full max-w-sm p-[var(--space-md)]",
-        md: "w-full max-w-lg p-[var(--space-lg)]",
-        lg: "w-full max-w-2xl p-[var(--space-lg)]",
-        xl: "w-full max-w-4xl p-[var(--space-xl)]",
-        full: "w-[95vw] h-[95vh] p-[var(--space-xl)]",
+        sm: "w-full max-w-sm p-4",
+        md: "w-full max-w-lg p-6",
+        lg: "w-full max-w-2xl p-6",
+        xl: "w-full max-w-4xl p-8",
+        full: "w-[95vw] h-[95vh] p-8",
       },
     },
     defaultVariants: {
@@ -102,9 +102,9 @@ const DialogContent = React.forwardRef<
       <DialogPrimitive.Close
         className={cn(
           "absolute right-4 top-4",
-          "rounded-[var(--radius-sm)] p-1",
+          "rounded-sm p-1",
           "opacity-70 transition-opacity hover:opacity-100",
-          "focus:outline-none focus:ring-2 focus:ring-[var(--primary)]",
+          "focus:outline-none focus:ring-2 focus:ring-primary",
           "disabled:pointer-events-none"
         )}
         aria-label="Close"
@@ -138,7 +138,7 @@ const DialogHeader = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn("flex flex-col gap-[var(--space-xs)] mb-[var(--space-md)]", className)}
+    className={cn("flex flex-col gap-1 mb-4", className)}
     {...props}
   />
 );
@@ -153,8 +153,8 @@ const DialogFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end gap-[var(--space-sm)]",
-      "mt-[var(--space-lg)]",
+      "flex flex-col-reverse sm:flex-row sm:justify-end gap-2",
+      "mt-6",
       className
     )}
     {...props}
@@ -172,7 +172,7 @@ const DialogTitle = React.forwardRef<
   <DialogPrimitive.Title
     ref={ref}
     className={cn(
-      "text-[var(--text-xl)] font-semibold leading-none tracking-tight",
+      "text-xl font-semibold leading-none tracking-tight",
       className
     )}
     {...props}
@@ -189,7 +189,7 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn("text-[var(--text-sm)] text-[var(--foreground)]/60", className)}
+    className={cn("text-sm text-foreground/60", className)}
     {...props}
   />
 ));

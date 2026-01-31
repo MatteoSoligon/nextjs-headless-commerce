@@ -28,10 +28,10 @@ const accordionVariants = cva("w-full", {
 const accordionItemVariants = cva("border-b last:border-b-0", {
   variants: {
     variant: {
-      default: "border-[var(--foreground)]/10",
-      bordered: "border-[var(--foreground)]/10",
+      default: "border-foreground/10",
+      bordered: "border-foreground/10",
       separated:
-        "border rounded-lg border-[var(--foreground)]/10 overflow-hidden",
+        "border rounded-lg border-foreground/10 overflow-hidden",
     },
   },
   defaultVariants: {
@@ -50,7 +50,7 @@ const accordionTriggerVariants = cva(
     "[&[data-state=open]>svg]:rotate-180",
     // Focus styles for accessibility
     "focus-visible:outline-none focus-visible:ring-2",
-    "focus-visible:ring-[var(--primary)] focus-visible:ring-offset-2",
+    "focus-visible:ring-primary focus-visible:ring-offset-2",
     // Disabled state
     "disabled:cursor-not-allowed disabled:opacity-50",
   ],
@@ -152,7 +152,7 @@ const AccordionTrigger = React.forwardRef<
       {...props}
     >
       {children}
-      <ChevronDownIcon className="h-4 w-4 shrink-0 text-[var(--foreground)]/50 transition-transform duration-200" />
+      <ChevronDownIcon className="h-4 w-4 shrink-0 text-foreground/50 transition-transform duration-200" />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ));

@@ -10,33 +10,33 @@ const inputVariants = cva(
   // Base styles with accessibility focus
   [
     "flex w-full",
-    "bg-[var(--background)] text-[var(--foreground)]",
-    "border border-[var(--foreground)]/20",
+    "bg-background text-foreground",
+    "border border-foreground",
     "transition-colors duration-200",
-    "placeholder:text-[var(--foreground)]/50",
+    "placeholder:text-foreground/50",
     // Focus styles - high visibility for accessibility
-    "focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-[var(--primary)]",
+    "focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary",
     // Disabled state
-    "disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-[var(--foreground)]/5",
+    "disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-foreground/5",
     // File input styles
-    "file:border-0 file:bg-transparent file:text-[var(--text-sm)] file:font-medium",
+    "file:border-0 file:bg-transparent file:text-sm file:font-medium",
   ],
   {
     variants: {
       size: {
-        sm: "h-8 px-3 text-[var(--text-sm)] rounded-[var(--radius-md)]",
-        md: "h-10 px-4 text-[var(--text-base)] rounded-[var(--radius-md)]",
-        lg: "h-12 px-4 text-[var(--text-lg)] rounded-[var(--radius-lg)]",
+        sm: "py-1.5 px-3 text-sm rounded-md",
+        md: "py-2.5 px-4 text-base rounded-md",
+        lg: "py-3 px-4 text-lg rounded-lg",
       },
       variant: {
         default: "",
-        filled: "bg-[var(--foreground)]/5 border-transparent focus:bg-[var(--background)]",
+        filled: "bg-foreground/5 border-transparent focus:bg-background",
         flushed: "border-0 border-b-2 rounded-none px-0 focus:ring-0",
       },
       state: {
         default: "",
-        error: "border-red-500 focus:ring-red-500 focus:border-red-500",
-        success: "border-green-500 focus:ring-green-500 focus:border-green-500",
+        error: "border-destructive focus:ring-destructive focus:border-destructive",
+        success: "border-success focus:ring-success focus:border-success",
       },
     },
     defaultVariants: {

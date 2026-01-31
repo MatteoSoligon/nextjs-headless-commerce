@@ -24,10 +24,10 @@ const DropdownMenuSubTrigger = React.forwardRef<
     ref={ref}
     className={cn(
       "flex cursor-default select-none items-center",
-      "rounded-[var(--radius-sm)] px-2 py-1.5",
-      "text-[var(--text-sm)] outline-none",
-      "focus:bg-[var(--foreground)]/10",
-      "data-[state=open]:bg-[var(--foreground)]/10",
+      "rounded-sm px-2 py-1.5",
+      "text-sm outline-none",
+      "focus:bg-foreground/10",
+      "data-[state=open]:bg-foreground/10",
       inset && "pl-8",
       className
     )}
@@ -60,8 +60,8 @@ const DropdownMenuSubContent = React.forwardRef<
     ref={ref}
     className={cn(
       "z-50 min-w-[8rem] overflow-hidden",
-      "rounded-[var(--radius-md)] border border-[var(--foreground)]/10",
-      "bg-[var(--background)] text-[var(--foreground)]",
+      "rounded-md border border-foreground/10",
+      "bg-background text-foreground",
       "p-1 shadow-lg",
       // Animations
       "data-[state=open]:animate-in data-[state=closed]:animate-out",
@@ -91,8 +91,8 @@ const DropdownMenuContent = React.forwardRef<
       sideOffset={sideOffset}
       className={cn(
         "z-50 min-w-[8rem] overflow-hidden",
-        "rounded-[var(--radius-md)] border border-[var(--foreground)]/10",
-        "bg-[var(--background)] text-[var(--foreground)]",
+        "rounded-md border border-foreground/10",
+        "bg-background text-foreground",
         "p-1 shadow-md",
         // Animations
         "data-[state=open]:animate-in data-[state=closed]:animate-out",
@@ -123,10 +123,10 @@ const DropdownMenuItem = React.forwardRef<
     ref={ref}
     className={cn(
       "relative flex cursor-default select-none items-center",
-      "rounded-[var(--radius-sm)] px-2 py-1.5",
-      "text-[var(--text-sm)] outline-none",
+      "rounded-sm px-2 py-1.5",
+      "text-sm outline-none",
       "transition-colors",
-      "focus:bg-[var(--primary)]/10 focus:text-[var(--primary)]",
+      "focus:bg-primary/10 focus:text-primary",
       "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       inset && "pl-8",
       className
@@ -147,10 +147,10 @@ const DropdownMenuCheckboxItem = React.forwardRef<
     ref={ref}
     className={cn(
       "relative flex cursor-default select-none items-center",
-      "rounded-[var(--radius-sm)] py-1.5 pl-8 pr-2",
-      "text-[var(--text-sm)] outline-none",
+      "rounded-sm py-1.5 pl-8 pr-2",
+      "text-sm outline-none",
       "transition-colors",
-      "focus:bg-[var(--primary)]/10 focus:text-[var(--primary)]",
+      "focus:bg-primary/10 focus:text-primary",
       "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       className
     )}
@@ -188,10 +188,10 @@ const DropdownMenuRadioItem = React.forwardRef<
     ref={ref}
     className={cn(
       "relative flex cursor-default select-none items-center",
-      "rounded-[var(--radius-sm)] py-1.5 pl-8 pr-2",
-      "text-[var(--text-sm)] outline-none",
+      "rounded-sm py-1.5 pl-8 pr-2",
+      "text-sm outline-none",
       "transition-colors",
-      "focus:bg-[var(--primary)]/10 focus:text-[var(--primary)]",
+      "focus:bg-primary/10 focus:text-primary",
       "data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
       className
     )}
@@ -226,7 +226,7 @@ const DropdownMenuLabel = React.forwardRef<
   <DropdownMenuPrimitive.Label
     ref={ref}
     className={cn(
-      "px-2 py-1.5 text-[var(--text-sm)] font-semibold",
+      "px-2 py-1.5 text-sm font-semibold",
       inset && "pl-8",
       className
     )}
@@ -244,7 +244,7 @@ const DropdownMenuSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DropdownMenuPrimitive.Separator
     ref={ref}
-    className={cn("-mx-1 my-1 h-px bg-[var(--foreground)]/10", className)}
+    className={cn("-mx-1 my-1 h-px bg-foreground/10", className)}
     {...props}
   />
 ));
@@ -260,7 +260,7 @@ const DropdownMenuShortcut = ({
   return (
     <span
       className={cn(
-        "ml-auto text-[var(--text-xs)] tracking-widest opacity-60",
+        "ml-auto text-xs tracking-widest opacity-60",
         className
       )}
       {...props}
