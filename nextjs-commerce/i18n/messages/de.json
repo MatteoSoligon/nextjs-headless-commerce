@@ -1,0 +1,10 @@
+{
+  "HomePage": {
+    "title": "Um zu beginnen, bearbeite die Datei page.tsx.",
+    "description": "Suchst du einen Ausgangspunkt oder weitere Anweisungen? Besuche <templates>Vorlagen</templates> oder das <learning>Lern</learning>-Center.",
+    "deployNow": "Jetzt bereitstellen",
+    "documentation": "Dokumentation",
+    "nextLogo": "Next.js-Logo",
+    "vercelLogo": "Vercel-Logomark"
+  }
+}
