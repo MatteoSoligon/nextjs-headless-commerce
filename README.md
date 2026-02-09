@@ -9,6 +9,28 @@ This repository provides a **headless commerce boilerplate** built with modern w
 
 ---
 
+## TODO
+
+Below is the tracked project todo list. Update statuses here as you make progress.
+
+- [doing] Form builder
+- [not-started] SEO metadata implementation — central `lib/seo` helpers, Head integration, OpenGraph/Twitter tags
+- [not-started] Global state — add a lightweight global store (Zustand/Context) for cart and UI state
+- [not-started] Env variables — validate and document required `NEXT_PUBLIC_` vars and `.env.example`
+- [not-started] Listing logic — implement product listing, filtering, pagination & server-side data fetching
+- [not-started] Analytics setup — integrate analytics (e.g., Segment/GA4) with an opt-out mechanism
+- [not-started] Map component — lightweight map wrapper (Leaflet/Mapbox) for store locators
+- [map api] Cache control headers — add `Cache-Control` strategy in `next.config.ts` for assets and APIs
+- [not-started] Ecommerce generic types — add TypeScript generics for product/cart/order models
+
+Next steps:
+
+1. Pick one `not-started` item and open a branch to implement it.
+2. For each task, create a concise PR with checklist and tests where applicable.
+
+
+---
+
 ## ✨ Features
 
 ### 🌍 Internationalization (i18n)
@@ -65,29 +87,6 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) to see the application.
 
----
-
-## 🗂 Repository Structure
-
-```
-nextjs-headless-commerce/
-├── nextjs-commerce/          # Main Next.js application
-│   ├── app/                  # App Router pages & layouts
-│   ├── components/           # Atomic Design components
-│   │   ├── atoms/           # Basic elements (Button, Input, etc.)
-│   │   ├── blocks/          # Composed components (Card, Dialog, etc.)
-│   │   ├── sections/        # Page sections
-│   │   ├── templates/       # Page templates
-│   │   └── pages/           # Full page compositions
-│   ├── i18n/                # Internationalization
-│   ├── lib/                 # Utilities & helpers
-│   ├── style/               # Global styles & theming
-│   └── config/              # Configuration files
-├── LICENSE
-└── README.md                 # You are here
-```
-
----
 
 ## 🧩 Component Library
 
