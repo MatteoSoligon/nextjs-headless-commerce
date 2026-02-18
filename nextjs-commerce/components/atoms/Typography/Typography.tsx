@@ -25,7 +25,7 @@ const textVariants = cva("text-foreground", {
       semibold: "font-semibold",
       bold: "font-bold",
     },
-    color: {
+    textColor: {
       default: "text-foreground",
       muted: "text-foreground/60",
       primary: "text-primary",
@@ -44,7 +44,7 @@ const textVariants = cva("text-foreground", {
   defaultVariants: {
     size: "base",
     weight: "normal",
-    color: "default",
+    textColor: "default",
   },
 });
 
@@ -63,7 +63,7 @@ const headingVariants = cva(
         h5: "text-xl leading-normal",
         h6: "text-lg leading-normal",
       },
-      color: {
+      textColor: {
         default: "text-foreground",
         primary: "text-primary",
         secondary: "text-secondary",
@@ -72,7 +72,7 @@ const headingVariants = cva(
     },
     defaultVariants: {
       level: "h2",
-      color: "default",
+      textColor: "default",
     },
   }
 );
@@ -101,11 +101,11 @@ export interface HeadingProps
  * <Text color="muted" size="sm">Secondary text</Text>
  */
 const Text = React.forwardRef<HTMLParagraphElement, TextProps>(
-  ({ className, as: Component = "p", size, weight, color, align, truncate, ...props }, ref) => {
+  ({ className, as: Component = "p", size, weight, textColor, align, truncate, ...props }, ref) => {
     return (
       <Component
         ref={ref}
-        className={cn(textVariants({ size, weight, color, align, truncate, className }))}
+        className={cn(textVariants({ size, weight, textColor, align, truncate, className }))}
         {...props}
       />
     );
@@ -121,14 +121,14 @@ Text.displayName = "Text";
  * <Heading level="h2" as="h3">Visually h2, semantically h3</Heading>
  */
 const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ className, level = "h2", color, as, ...props }, ref) => {
+  ({ className, level = "h2", textColor, as, ...props }, ref) => {
     // Use the semantic 'as' prop if provided, otherwise match the visual level
-    const Component = as || level;
+    const Component = as || level || 'h1';
 
     return (
       <Component
         ref={ref}
-        className={cn(headingVariants({ level, color, className }))}
+        className={cn(headingVariants({ level, textColor, className }))}
         {...props}
       />
     );

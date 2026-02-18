@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "@/style/globals.css";
-import "@radix-ui/themes/styles.css";
 
 
 export const metadata: Metadata = {
