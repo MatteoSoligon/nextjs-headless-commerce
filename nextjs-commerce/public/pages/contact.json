@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "title": "Contact Us",
+    "description": "Get in touch with us for any inquiries or support.",
+    "content": "<p>Feel free to reach out to us through the following channels:</p>",
+    "src": "/next.svg",
+    "alt": "Contact Image",
+    "width": 1000,
+    "height": 200
+  },
+  {
+    "id": "2",
+    "title": "Contact Us 2",
+    "description": "Get in touch with us for any inquiries or support.",
+    "content": "<p>Feel free to reach out to us through the following channels:</p>",
+    "src": "/next.svg",
+    "alt": "Contact Image",
+    "width": 1000,
+    "height": 200
+  },
+  {
+    "id": "3",
+    "title": "Contact Us 3",
+    "description": "Get in touch with us for any inquiries or support.",
+    "content": "<p>Feel free to reach out to us through the following channels:</p>",
+    "src": "/next.svg",
+    "alt": "Contact Image",
+    "width": 1000,
+    "height": 200
+  }
+]
