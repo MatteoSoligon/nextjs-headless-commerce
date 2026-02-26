@@ -6,7 +6,7 @@ import {
   SelectValue,
   SelectItem,
   SelectContent,
-} from "@/components/blocks";
+} from "@/components/atoms";
 import { useForm, Controller, SubmitHandler, ControllerFieldState, ControllerRenderProps } from "react-hook-form";
 import {
   Button,

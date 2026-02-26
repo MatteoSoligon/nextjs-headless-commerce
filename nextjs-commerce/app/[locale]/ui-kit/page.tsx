@@ -8,6 +8,26 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+} from "@/components/blocks";
+import {
+  Heading,
+  Text,
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  Button,
+  Badge,
+  Checkbox,
+  Label,
+  Input,
+  RadioGroup,
+  RadioGroupItem,
+  Switch,
   Dialog,
   DialogTrigger,
   DialogContent,
@@ -26,32 +46,11 @@ import {
   SelectValue,
   SelectContent,
   SelectItem,
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
   SimpleTooltip,
-} from "@/components/blocks";
-import {
-  Heading,
-  Text,
-  Accordion,
-  AccordionItem,
-  AccordionTrigger,
-  AccordionContent,
-  Button,
-  Badge,
-  Checkbox,
-  Label,
-  Input,
-  RadioGroup,
-  RadioGroupItem,
-  Switch,
 } from "@/components/atoms";
 import TestForm from "@/components/sections/TestForm";
 
 export default async function UIKitPage() {
-
   return (
     <div className="container mx-auto py-10 px-4 max-w-4xl">
       <div className="mb-10">
@@ -564,9 +563,7 @@ export default async function UIKitPage() {
               <div className="space-y-4">
                 <Text weight="medium">Interactive Example</Text>
                 <div className="flex items-center gap-2">
-                  <Switch
-                    id="notifications"
-                  />
+                  <Switch id="notifications" />
                   <Label htmlFor="notifications">Enable notifications</Label>
                 </div>
               </div>
@@ -686,100 +683,11 @@ export default async function UIKitPage() {
           </AccordionContent>
         </AccordionItem>
 
-        {/* ========================================
-            BLOCKS SECTION
-        ======================================== */}
-
-        {/* Card Component */}
-        <AccordionItem value="card" variant="separated">
-          <AccordionTrigger>
-            <div className="flex items-center gap-3">
-              <Badge variant="secondary">Block</Badge>
-              <span className="font-semibold">Card</span>
-            </div>
-          </AccordionTrigger>
-          <AccordionContent>
-            <div className="space-y-6">
-              <Text color="muted" size="sm">
-                Container component for grouping related content.
-              </Text>
-
-              <div className="space-y-4">
-                <Text weight="medium">Variants</Text>
-                <div className="grid gap-4 md:grid-cols-2">
-                  <Card variant="default">
-                    <CardHeader>
-                      <CardTitle>Default Card</CardTitle>
-                      <CardDescription>With border style</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <Text size="sm">Card content goes here.</Text>
-                    </CardContent>
-                  </Card>
-
-                  <Card variant="elevated">
-                    <CardHeader>
-                      <CardTitle>Elevated Card</CardTitle>
-                      <CardDescription>With shadow</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <Text size="sm">Card content goes here.</Text>
-                    </CardContent>
-                  </Card>
-
-                  <Card variant="interactive">
-                    <CardHeader>
-                      <CardTitle>Interactive Card</CardTitle>
-                      <CardDescription>Hover to see effect</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <Text size="sm">Clickable card style.</Text>
-                    </CardContent>
-                  </Card>
-
-                  <Card variant="filled">
-                    <CardHeader>
-                      <CardTitle>Filled Card</CardTitle>
-                      <CardDescription>Subtle background</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <Text size="sm">Card content goes here.</Text>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <Text weight="medium">With Footer</Text>
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Complete Card</CardTitle>
-                    <CardDescription>
-                      With all sections including footer
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Text size="sm">
-                      This card demonstrates all available sections.
-                    </Text>
-                  </CardContent>
-                  <CardFooter className="gap-2">
-                    <Button variant="outline" size="sm">
-                      Cancel
-                    </Button>
-                    <Button size="sm">Save</Button>
-                  </CardFooter>
-                </Card>
-              </div>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-
         {/* Dialog Component */}
         <AccordionItem value="dialog" variant="separated">
           <AccordionTrigger>
             <div className="flex items-center gap-3">
-              <Badge variant="secondary">Block</Badge>
+              <Badge variant="primary">Atom</Badge>
               <span className="font-semibold">Dialog</span>
             </div>
           </AccordionTrigger>
@@ -875,7 +783,7 @@ export default async function UIKitPage() {
         <AccordionItem value="dropdown" variant="separated">
           <AccordionTrigger>
             <div className="flex items-center gap-3">
-              <Badge variant="secondary">Block</Badge>
+              <Badge variant="primary">Atom</Badge>
               <span className="font-semibold">DropdownMenu</span>
             </div>
           </AccordionTrigger>
@@ -914,7 +822,7 @@ export default async function UIKitPage() {
         <AccordionItem value="select" variant="separated">
           <AccordionTrigger>
             <div className="flex items-center gap-3">
-              <Badge variant="secondary">Block</Badge>
+              <Badge variant="primary">Atom</Badge>
               <span className="font-semibold">Select</span>
             </div>
           </AccordionTrigger>
@@ -1006,6 +914,177 @@ export default async function UIKitPage() {
               </div>
             </AccordionContent>
           </React.Suspense>
+        </AccordionItem>
+
+        {/* Tooltip Component */}
+        <AccordionItem value="tooltip" variant="separated">
+          <AccordionTrigger>
+            <div className="flex items-center gap-3">
+              <Badge variant="primary">Atom</Badge>
+              <span className="font-semibold">Tooltip</span>
+            </div>
+          </AccordionTrigger>
+          <React.Suspense
+            fallback={<div className="py-4 text-center">Loading…</div>}
+          >
+            <AccordionContent>
+              <div className="space-y-6">
+                <Text color="muted" size="sm">
+                  Informational popups on hover for additional context.
+                </Text>
+
+                <div className="space-y-4">
+                  <Text weight="medium">Variants</Text>
+                  <div className="flex flex-wrap gap-4">
+                    <SimpleTooltip content="Default tooltip" variant="default">
+                      <Button variant="outline" size="sm">
+                        Default
+                      </Button>
+                    </SimpleTooltip>
+
+                    <SimpleTooltip content="Primary tooltip" variant="primary">
+                      <Button variant="outline" size="sm">
+                        Primary
+                      </Button>
+                    </SimpleTooltip>
+
+                    <SimpleTooltip
+                      content="Secondary tooltip"
+                      variant="secondary"
+                    >
+                      <Button variant="outline" size="sm">
+                        Secondary
+                      </Button>
+                    </SimpleTooltip>
+
+                    <SimpleTooltip content="Light tooltip" variant="light">
+                      <Button variant="outline" size="sm">
+                        Light
+                      </Button>
+                    </SimpleTooltip>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <Text weight="medium">Positions</Text>
+                  <div className="flex flex-wrap gap-4">
+                    <SimpleTooltip content="Top tooltip" side="top">
+                      <Button variant="outline" size="sm">
+                        Top
+                      </Button>
+                    </SimpleTooltip>
+
+                    <SimpleTooltip content="Bottom tooltip" side="bottom">
+                      <Button variant="outline" size="sm">
+                        Bottom
+                      </Button>
+                    </SimpleTooltip>
+
+                    <SimpleTooltip content="Left tooltip" side="left">
+                      <Button variant="outline" size="sm">
+                        Left
+                      </Button>
+                    </SimpleTooltip>
+
+                    <SimpleTooltip content="Right tooltip" side="right">
+                      <Button variant="outline" size="sm">
+                        Right
+                      </Button>
+                    </SimpleTooltip>
+                  </div>
+                </div>
+              </div>
+            </AccordionContent>
+          </React.Suspense>
+        </AccordionItem>
+
+        {/* ========================================
+            BLOCKS SECTION
+        ======================================== */}
+
+        {/* Card Component */}
+        <AccordionItem value="card" variant="separated">
+          <AccordionTrigger>
+            <div className="flex items-center gap-3">
+              <Badge variant="secondary">Block</Badge>
+              <span className="font-semibold">Card</span>
+            </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="space-y-6">
+              <Text color="muted" size="sm">
+                Container component for grouping related content.
+              </Text>
+
+              <div className="space-y-4">
+                <Text weight="medium">Variants</Text>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <Card variant="default">
+                    <CardHeader>
+                      <CardTitle>Default Card</CardTitle>
+                      <CardDescription>With border style</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <Text size="sm">Card content goes here.</Text>
+                    </CardContent>
+                  </Card>
+
+                  <Card variant="elevated">
+                    <CardHeader>
+                      <CardTitle>Elevated Card</CardTitle>
+                      <CardDescription>With shadow</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <Text size="sm">Card content goes here.</Text>
+                    </CardContent>
+                  </Card>
+
+                  <Card variant="interactive">
+                    <CardHeader>
+                      <CardTitle>Interactive Card</CardTitle>
+                      <CardDescription>Hover to see effect</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <Text size="sm">Clickable card style.</Text>
+                    </CardContent>
+                  </Card>
+
+                  <Card variant="filled">
+                    <CardHeader>
+                      <CardTitle>Filled Card</CardTitle>
+                      <CardDescription>Subtle background</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <Text size="sm">Card content goes here.</Text>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <Text weight="medium">With Footer</Text>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Complete Card</CardTitle>
+                    <CardDescription>
+                      With all sections including footer
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Text size="sm">
+                      This card demonstrates all available sections.
+                    </Text>
+                  </CardContent>
+                  <CardFooter className="gap-2">
+                    <Button variant="outline" size="sm">
+                      Cancel
+                    </Button>
+                    <Button size="sm">Save</Button>
+                  </CardFooter>
+                </Card>
+              </div>
+            </div>
+          </AccordionContent>
         </AccordionItem>
 
         {/* Tabs Component */}
@@ -1128,87 +1207,7 @@ export default async function UIKitPage() {
           </React.Suspense>
         </AccordionItem>
 
-        {/* Tooltip Component */}
-        <AccordionItem value="tooltip" variant="separated">
-          <AccordionTrigger>
-            <div className="flex items-center gap-3">
-              <Badge variant="secondary">Block</Badge>
-              <span className="font-semibold">Tooltip</span>
-            </div>
-          </AccordionTrigger>
-          <React.Suspense
-            fallback={<div className="py-4 text-center">Loading…</div>}
-          >
-            <AccordionContent>
-              <div className="space-y-6">
-                <Text color="muted" size="sm">
-                  Informational popups on hover for additional context.
-                </Text>
-
-                <div className="space-y-4">
-                  <Text weight="medium">Variants</Text>
-                  <div className="flex flex-wrap gap-4">
-                    <SimpleTooltip content="Default tooltip" variant="default">
-                      <Button variant="outline" size="sm">
-                        Default
-                      </Button>
-                    </SimpleTooltip>
-
-                    <SimpleTooltip content="Primary tooltip" variant="primary">
-                      <Button variant="outline" size="sm">
-                        Primary
-                      </Button>
-                    </SimpleTooltip>
-
-                    <SimpleTooltip
-                      content="Secondary tooltip"
-                      variant="secondary"
-                    >
-                      <Button variant="outline" size="sm">
-                        Secondary
-                      </Button>
-                    </SimpleTooltip>
-
-                    <SimpleTooltip content="Light tooltip" variant="light">
-                      <Button variant="outline" size="sm">
-                        Light
-                      </Button>
-                    </SimpleTooltip>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <Text weight="medium">Positions</Text>
-                  <div className="flex flex-wrap gap-4">
-                    <SimpleTooltip content="Top tooltip" side="top">
-                      <Button variant="outline" size="sm">
-                        Top
-                      </Button>
-                    </SimpleTooltip>
-
-                    <SimpleTooltip content="Bottom tooltip" side="bottom">
-                      <Button variant="outline" size="sm">
-                        Bottom
-                      </Button>
-                    </SimpleTooltip>
-
-                    <SimpleTooltip content="Left tooltip" side="left">
-                      <Button variant="outline" size="sm">
-                        Left
-                      </Button>
-                    </SimpleTooltip>
-
-                    <SimpleTooltip content="Right tooltip" side="right">
-                      <Button variant="outline" size="sm">
-                        Right
-                      </Button>
-                    </SimpleTooltip>
-                  </div>
-                </div>
-              </div>
-            </AccordionContent>
-          </React.Suspense>
-        </AccordionItem>
+        
         {/* Form Component */}
         <AccordionItem value="form" variant="separated">
           <AccordionTrigger>
@@ -1218,7 +1217,7 @@ export default async function UIKitPage() {
             </div>
           </AccordionTrigger>
 
-          <AccordionContent> 
+          <AccordionContent>
             <React.Suspense
               fallback={<div className="py-4 text-center">Loading…</div>}
             >

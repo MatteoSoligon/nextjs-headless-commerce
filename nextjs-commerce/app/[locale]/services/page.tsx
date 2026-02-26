@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import Slider from "@/components/blocks/Slider";
+import Slider from "@/components/atoms/Slider";
 import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 
