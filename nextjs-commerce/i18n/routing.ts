@@ -56,13 +56,13 @@ export const routing = defineRouting({
  
     // Encoding of non-ASCII characters is handled
     // automatically where relevant
-    '/about': {
-      de: '/über-uns'
+    '/product': {
+      de: '/produkte'
     },
  
     // Dynamic params are supported via square brackets
-    '/news/[articleSlug]': {
-      de: '/neuigkeiten/[articleSlug]'
+    '/product/[id]': {
+      de: '/produkte/[id]'
     },
  
     // Static pathnames that overlap with dynamic segments
