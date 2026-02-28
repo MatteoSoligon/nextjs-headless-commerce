@@ -18,3 +18,4 @@ export * from "./Slider";
 export * from "./DropdownMenu";
 export * from "./Tooltip";
 export * from "./Grid";
+export * from "./Container";

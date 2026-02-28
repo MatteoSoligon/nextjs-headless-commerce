@@ -49,22 +49,25 @@ import {
   SimpleTooltip,
   Grid,
   GridItem,
+  Container,
 } from "@/components/atoms";
 import TestForm from "@/components/sections/TestForm";
 
 export default async function UIKitPage() {
   return (
-    <div className="container mx-auto py-10 px-4 max-w-4xl">
-      <div className="mb-10">
-        <Heading level="h1" className="mb-4">
-          UI Kit
-        </Heading>
-        <Text color="muted" size="lg">
-          A comprehensive showcase of all available components in the design
-          system.
-        </Text>
-      </div>
+    <Container maxWidth="xl" py="lg">
+      <Grid layout="1-col" gap="lg">
+        <GridItem>
+          <Heading level="h1" className="mb-4">
+            UI Kit
+          </Heading>
+          <Text color="muted" size="lg">
+            A comprehensive showcase of all available components in the design
+            system.
+          </Text>
+        </GridItem>
 
+        <GridItem>
       <Accordion type="multiple" variant="separated" className="space-y-4">
         {/* ========================================
             ATOMS SECTION
@@ -1000,219 +1003,6 @@ export default async function UIKitPage() {
           </React.Suspense>
         </AccordionItem>
 
-        {/* ========================================
-            BLOCKS SECTION
-        ======================================== */}
-
-        {/* Card Component */}
-        <AccordionItem value="card" variant="separated">
-          <AccordionTrigger>
-            <div className="flex items-center gap-3">
-              <Badge variant="secondary">Block</Badge>
-              <span className="font-semibold">Card</span>
-            </div>
-          </AccordionTrigger>
-          <AccordionContent>
-            <div className="space-y-6">
-              <Text color="muted" size="sm">
-                Container component for grouping related content.
-              </Text>
-
-              <div className="space-y-4">
-                <Text weight="medium">Variants</Text>
-                <div className="grid gap-4 md:grid-cols-2">
-                  <Card variant="default">
-                    <CardHeader>
-                      <CardTitle>Default Card</CardTitle>
-                      <CardDescription>With border style</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <Text size="sm">Card content goes here.</Text>
-                    </CardContent>
-                  </Card>
-
-                  <Card variant="elevated">
-                    <CardHeader>
-                      <CardTitle>Elevated Card</CardTitle>
-                      <CardDescription>With shadow</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <Text size="sm">Card content goes here.</Text>
-                    </CardContent>
-                  </Card>
-
-                  <Card variant="interactive">
-                    <CardHeader>
-                      <CardTitle>Interactive Card</CardTitle>
-                      <CardDescription>Hover to see effect</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <Text size="sm">Clickable card style.</Text>
-                    </CardContent>
-                  </Card>
-
-                  <Card variant="filled">
-                    <CardHeader>
-                      <CardTitle>Filled Card</CardTitle>
-                      <CardDescription>Subtle background</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <Text size="sm">Card content goes here.</Text>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <Text weight="medium">With Footer</Text>
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Complete Card</CardTitle>
-                    <CardDescription>
-                      With all sections including footer
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <Text size="sm">
-                      This card demonstrates all available sections.
-                    </Text>
-                  </CardContent>
-                  <CardFooter className="gap-2">
-                    <Button variant="outline" size="sm">
-                      Cancel
-                    </Button>
-                    <Button size="sm">Save</Button>
-                  </CardFooter>
-                </Card>
-              </div>
-            </div>
-          </AccordionContent>
-        </AccordionItem>
-
-        {/* Tabs Component */}
-        <AccordionItem value="tabs" variant="separated">
-          <AccordionTrigger>
-            <div className="flex items-center gap-3">
-              <Badge variant="secondary">Block</Badge>
-              <span className="font-semibold">Tabs</span>
-            </div>
-          </AccordionTrigger>
-          <React.Suspense
-            fallback={<div className="py-4 text-center">Loading…</div>}
-          >
-            <AccordionContent>
-              <div className="space-y-6">
-                <Text color="muted" size="sm">
-                  Tabbed navigation for organizing content into panels.
-                </Text>
-
-                <div className="space-y-4">
-                  <Text weight="medium">Default Variant</Text>
-                  <Tabs defaultValue="tab1">
-                    <TabsList variant="default">
-                      <TabsTrigger variant="default" value="tab1">
-                        Account
-                      </TabsTrigger>
-                      <TabsTrigger variant="default" value="tab2">
-                        Password
-                      </TabsTrigger>
-                      <TabsTrigger variant="default" value="tab3">
-                        Settings
-                      </TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="tab1">
-                      <Card>
-                        <CardHeader>
-                          <CardTitle>Account</CardTitle>
-                          <CardDescription>
-                            Manage your account settings.
-                          </CardDescription>
-                        </CardHeader>
-                      </Card>
-                    </TabsContent>
-                    <TabsContent value="tab2">
-                      <Card>
-                        <CardHeader>
-                          <CardTitle>Password</CardTitle>
-                          <CardDescription>
-                            Change your password.
-                          </CardDescription>
-                        </CardHeader>
-                      </Card>
-                    </TabsContent>
-                    <TabsContent value="tab3">
-                      <Card>
-                        <CardHeader>
-                          <CardTitle>Settings</CardTitle>
-                          <CardDescription>
-                            Configure your preferences.
-                          </CardDescription>
-                        </CardHeader>
-                      </Card>
-                    </TabsContent>
-                  </Tabs>
-                </div>
-
-                <div className="space-y-4">
-                  <Text weight="medium">Underline Variant</Text>
-                  <Tabs defaultValue="u1">
-                    <TabsList variant="underline">
-                      <TabsTrigger variant="underline" value="u1">
-                        Overview
-                      </TabsTrigger>
-                      <TabsTrigger variant="underline" value="u2">
-                        Analytics
-                      </TabsTrigger>
-                      <TabsTrigger variant="underline" value="u3">
-                        Reports
-                      </TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="u1">
-                      <Text className="mt-4">Overview content here.</Text>
-                    </TabsContent>
-                    <TabsContent value="u2">
-                      <Text className="mt-4">Analytics content here.</Text>
-                    </TabsContent>
-                    <TabsContent value="u3">
-                      <Text className="mt-4">Reports content here.</Text>
-                    </TabsContent>
-                  </Tabs>
-                </div>
-
-                <div className="space-y-4">
-                  <Text weight="medium">Pills Variant</Text>
-                  <Tabs defaultValue="p1">
-                    <TabsList variant="pills">
-                      <TabsTrigger variant="pills" value="p1">
-                        All
-                      </TabsTrigger>
-                      <TabsTrigger variant="pills" value="p2">
-                        Active
-                      </TabsTrigger>
-                      <TabsTrigger variant="pills" value="p3">
-                        Archived
-                      </TabsTrigger>
-                    </TabsList>
-                    <TabsContent value="p1">
-                      <Text className="mt-4">All items.</Text>
-                    </TabsContent>
-                    <TabsContent value="p2">
-                      <Text className="mt-4">Active items only.</Text>
-                    </TabsContent>
-                    <TabsContent value="p3">
-                      <Text className="mt-4">Archived items.</Text>
-                    </TabsContent>
-                  </Tabs>
-                </div>
-              </div>
-            </AccordionContent>
-          </React.Suspense>
-        </AccordionItem>
-
-        {/* ========================================
-            LAYOUT SECTION
-        ======================================== */}
-
         {/* Grid Component */}
         <AccordionItem value="grid" variant="separated">
           <AccordionTrigger>
@@ -1477,6 +1267,215 @@ export default async function UIKitPage() {
           </AccordionContent>
         </AccordionItem>
 
+        {/* ========================================
+            BLOCKS SECTION
+        ======================================== */}
+
+        {/* Card Component */}
+        <AccordionItem value="card" variant="separated">
+          <AccordionTrigger>
+            <div className="flex items-center gap-3">
+              <Badge variant="secondary">Block</Badge>
+              <span className="font-semibold">Card</span>
+            </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="space-y-6">
+              <Text color="muted" size="sm">
+                Container component for grouping related content.
+              </Text>
+
+              <div className="space-y-4">
+                <Text weight="medium">Variants</Text>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <Card variant="default">
+                    <CardHeader>
+                      <CardTitle>Default Card</CardTitle>
+                      <CardDescription>With border style</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <Text size="sm">Card content goes here.</Text>
+                    </CardContent>
+                  </Card>
+
+                  <Card variant="elevated">
+                    <CardHeader>
+                      <CardTitle>Elevated Card</CardTitle>
+                      <CardDescription>With shadow</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <Text size="sm">Card content goes here.</Text>
+                    </CardContent>
+                  </Card>
+
+                  <Card variant="interactive">
+                    <CardHeader>
+                      <CardTitle>Interactive Card</CardTitle>
+                      <CardDescription>Hover to see effect</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <Text size="sm">Clickable card style.</Text>
+                    </CardContent>
+                  </Card>
+
+                  <Card variant="filled">
+                    <CardHeader>
+                      <CardTitle>Filled Card</CardTitle>
+                      <CardDescription>Subtle background</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <Text size="sm">Card content goes here.</Text>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <Text weight="medium">With Footer</Text>
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Complete Card</CardTitle>
+                    <CardDescription>
+                      With all sections including footer
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <Text size="sm">
+                      This card demonstrates all available sections.
+                    </Text>
+                  </CardContent>
+                  <CardFooter className="gap-2">
+                    <Button variant="outline" size="sm">
+                      Cancel
+                    </Button>
+                    <Button size="sm">Save</Button>
+                  </CardFooter>
+                </Card>
+              </div>
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+
+        {/* Tabs Component */}
+        <AccordionItem value="tabs" variant="separated">
+          <AccordionTrigger>
+            <div className="flex items-center gap-3">
+              <Badge variant="secondary">Block</Badge>
+              <span className="font-semibold">Tabs</span>
+            </div>
+          </AccordionTrigger>
+          <React.Suspense
+            fallback={<div className="py-4 text-center">Loading…</div>}
+          >
+            <AccordionContent>
+              <div className="space-y-6">
+                <Text color="muted" size="sm">
+                  Tabbed navigation for organizing content into panels.
+                </Text>
+
+                <div className="space-y-4">
+                  <Text weight="medium">Default Variant</Text>
+                  <Tabs defaultValue="tab1">
+                    <TabsList variant="default">
+                      <TabsTrigger variant="default" value="tab1">
+                        Account
+                      </TabsTrigger>
+                      <TabsTrigger variant="default" value="tab2">
+                        Password
+                      </TabsTrigger>
+                      <TabsTrigger variant="default" value="tab3">
+                        Settings
+                      </TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="tab1">
+                      <Card>
+                        <CardHeader>
+                          <CardTitle>Account</CardTitle>
+                          <CardDescription>
+                            Manage your account settings.
+                          </CardDescription>
+                        </CardHeader>
+                      </Card>
+                    </TabsContent>
+                    <TabsContent value="tab2">
+                      <Card>
+                        <CardHeader>
+                          <CardTitle>Password</CardTitle>
+                          <CardDescription>
+                            Change your password.
+                          </CardDescription>
+                        </CardHeader>
+                      </Card>
+                    </TabsContent>
+                    <TabsContent value="tab3">
+                      <Card>
+                        <CardHeader>
+                          <CardTitle>Settings</CardTitle>
+                          <CardDescription>
+                            Configure your preferences.
+                          </CardDescription>
+                        </CardHeader>
+                      </Card>
+                    </TabsContent>
+                  </Tabs>
+                </div>
+
+                <div className="space-y-4">
+                  <Text weight="medium">Underline Variant</Text>
+                  <Tabs defaultValue="u1">
+                    <TabsList variant="underline">
+                      <TabsTrigger variant="underline" value="u1">
+                        Overview
+                      </TabsTrigger>
+                      <TabsTrigger variant="underline" value="u2">
+                        Analytics
+                      </TabsTrigger>
+                      <TabsTrigger variant="underline" value="u3">
+                        Reports
+                      </TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="u1">
+                      <Text className="mt-4">Overview content here.</Text>
+                    </TabsContent>
+                    <TabsContent value="u2">
+                      <Text className="mt-4">Analytics content here.</Text>
+                    </TabsContent>
+                    <TabsContent value="u3">
+                      <Text className="mt-4">Reports content here.</Text>
+                    </TabsContent>
+                  </Tabs>
+                </div>
+
+                <div className="space-y-4">
+                  <Text weight="medium">Pills Variant</Text>
+                  <Tabs defaultValue="p1">
+                    <TabsList variant="pills">
+                      <TabsTrigger variant="pills" value="p1">
+                        All
+                      </TabsTrigger>
+                      <TabsTrigger variant="pills" value="p2">
+                        Active
+                      </TabsTrigger>
+                      <TabsTrigger variant="pills" value="p3">
+                        Archived
+                      </TabsTrigger>
+                    </TabsList>
+                    <TabsContent value="p1">
+                      <Text className="mt-4">All items.</Text>
+                    </TabsContent>
+                    <TabsContent value="p2">
+                      <Text className="mt-4">Active items only.</Text>
+                    </TabsContent>
+                    <TabsContent value="p3">
+                      <Text className="mt-4">Archived items.</Text>
+                    </TabsContent>
+                  </Tabs>
+                </div>
+              </div>
+            </AccordionContent>
+          </React.Suspense>
+        </AccordionItem>
+
         
         {/* Form Component */}
         <AccordionItem value="form" variant="separated">
@@ -1496,6 +1495,8 @@ export default async function UIKitPage() {
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </div>
+        </GridItem>
+      </Grid>
+    </Container>
   );
 }

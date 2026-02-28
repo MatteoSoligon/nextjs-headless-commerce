@@ -25,7 +25,7 @@ const accordionVariants = cva("w-full", {
 /**
  * Accordion item variants
  */
-const accordionItemVariants = cva("border-b last:border-b-0", {
+const accordionItemVariants = cva("border-b", {
   variants: {
     variant: {
       default: "border-foreground/10",
