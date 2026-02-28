@@ -1,11 +1,12 @@
 import { FC } from "react";
+import { Container } from "../atoms";
 
 const Footer: FC = () => {
     return (
         <footer className="bg-gray-800 text-white py-6 mt-10">
-            <div className="container mx-auto text-center">
+            <Container maxWidth="xl" py="lg">
                 <p>&copy; {new Date().getFullYear()} My E-commerce Store. All rights reserved.</p>
-            </div>
+            </Container>
         </footer>
     );
 };

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { Heading } from "@/components/atoms";
+import { Container, Heading } from "@/components/atoms";
 import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import Slider from "@/components/atoms/Slider";
@@ -34,7 +34,7 @@ export default async function Home({ params }: any) {
   ));
 
   return (
-    <div className="container mx-auto py-10 px-4 max-w-4xl">
+    <Container maxWidth="xl" py="lg">
       <Heading level="h2" className="mb-6">
         {t("title")}
       </Heading>
@@ -43,6 +43,6 @@ export default async function Home({ params }: any) {
           <Slider>{sliderItems}</Slider>
         </div>
       </Suspense>
-    </div>
+    </Container>
   );
 }

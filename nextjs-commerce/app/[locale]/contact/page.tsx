@@ -1,3 +1,4 @@
+import { Container } from "@/components/atoms";
 import TestForm from "@/components/sections/TestForm";
 
 type Props = {
@@ -8,5 +9,5 @@ type Props = {
 
 export default async function Contact({ }: Props) {
 
-  return <div><TestForm /></div>;
+  return <Container maxWidth="xl" py="lg"><TestForm /></Container>;
 }
