@@ -15,5 +15,16 @@
   },
   "Form": {
     "firstName": "First Name"
+  },
+  "ErrorPage": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. Please try again.",
+    "retry": "Try again",
+    "home": "Go home"
+  },
+  "NotFoundPage": {
+    "title": "Page not found",
+    "description": "Sorry, we couldn't find the page you're looking for.",
+    "home": "Go home"
   }
 }

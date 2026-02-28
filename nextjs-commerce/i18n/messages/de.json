@@ -15,5 +15,16 @@
   },
   "Form": {
     "firstName": "Vorname"
-   }
+  },
+  "ErrorPage": {
+    "title": "Etwas ist schiefgelaufen",
+    "description": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuche es erneut.",
+    "retry": "Erneut versuchen",
+    "home": "Zur Startseite"
+  },
+  "NotFoundPage": {
+    "title": "Seite nicht gefunden",
+    "description": "Entschuldigung, die gesuchte Seite konnte nicht gefunden werden.",
+    "home": "Zur Startseite"
+  }
 }
