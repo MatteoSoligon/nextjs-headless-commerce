@@ -47,6 +47,8 @@ import {
   SelectContent,
   SelectItem,
   SimpleTooltip,
+  Grid,
+  GridItem,
 } from "@/components/atoms";
 import TestForm from "@/components/sections/TestForm";
 
@@ -1205,6 +1207,274 @@ export default async function UIKitPage() {
               </div>
             </AccordionContent>
           </React.Suspense>
+        </AccordionItem>
+
+        {/* ========================================
+            LAYOUT SECTION
+        ======================================== */}
+
+        {/* Grid Component */}
+        <AccordionItem value="grid" variant="separated">
+          <AccordionTrigger>
+            <div className="flex items-center gap-3">
+              <Badge variant="primary">Atom</Badge>
+              <span className="font-semibold">Grid</span>
+            </div>
+          </AccordionTrigger>
+          <AccordionContent>
+            <div className="space-y-8">
+              <Text color="muted" size="sm">
+                Flexible CSS Grid container for page and section layouts. Use
+                preset <code>layout</code> variants for common patterns or
+                explicit <code>cols</code> / <code>colsMd</code> /
+                <code>colsLg</code> props for full responsive control.
+              </Text>
+
+              {/* --- Preset Layouts --- */}
+              <div className="space-y-4">
+                <Text weight="medium">Preset Layouts</Text>
+
+                <Text size="sm" color="muted">
+                  <code>layout=&quot;2-col&quot;</code> — Two equal columns
+                  (stacks on mobile)
+                </Text>
+                <Grid layout="2-col" gap="md">
+                  <Card variant="filled" padding="md">
+                    <Text size="sm" weight="medium">Column 1</Text>
+                  </Card>
+                  <Card variant="filled" padding="md">
+                    <Text size="sm" weight="medium">Column 2</Text>
+                  </Card>
+                </Grid>
+
+                <Text size="sm" color="muted">
+                  <code>layout=&quot;3-col&quot;</code> — Three equal columns
+                </Text>
+                <Grid layout="3-col" gap="md">
+                  <Card variant="filled" padding="md">
+                    <Text size="sm" weight="medium">Column 1</Text>
+                  </Card>
+                  <Card variant="filled" padding="md">
+                    <Text size="sm" weight="medium">Column 2</Text>
+                  </Card>
+                  <Card variant="filled" padding="md">
+                    <Text size="sm" weight="medium">Column 3</Text>
+                  </Card>
+                </Grid>
+
+                <Text size="sm" color="muted">
+                  <code>layout=&quot;4-col&quot;</code> — Four equal columns
+                </Text>
+                <Grid layout="4-col" gap="md">
+                  {[1, 2, 3, 4].map((n) => (
+                    <Card key={n} variant="filled" padding="md">
+                      <Text size="sm" weight="medium">Col {n}</Text>
+                    </Card>
+                  ))}
+                </Grid>
+              </div>
+
+              {/* --- Sidebar Layouts --- */}
+              <div className="space-y-4">
+                <Text weight="medium">Sidebar Layouts</Text>
+
+                <Text size="sm" color="muted">
+                  <code>layout=&quot;sidebar-left&quot;</code> — Fixed left
+                  sidebar (280px) with fluid content
+                </Text>
+                <Grid layout="sidebar-left" gap="md">
+                  <Card variant="outline" padding="md">
+                    <Text size="sm" weight="medium">Sidebar</Text>
+                    <Text size="xs" color="muted">280px fixed</Text>
+                  </Card>
+                  <Card variant="filled" padding="md">
+                    <Text size="sm" weight="medium">Main Content</Text>
+                    <Text size="xs" color="muted">Fluid width</Text>
+                  </Card>
+                </Grid>
+
+                <Text size="sm" color="muted">
+                  <code>layout=&quot;sidebar-right&quot;</code> — Fluid content
+                  with fixed right sidebar
+                </Text>
+                <Grid layout="sidebar-right" gap="md">
+                  <Card variant="filled" padding="md">
+                    <Text size="sm" weight="medium">Main Content</Text>
+                    <Text size="xs" color="muted">Fluid width</Text>
+                  </Card>
+                  <Card variant="outline" padding="md">
+                    <Text size="sm" weight="medium">Sidebar</Text>
+                    <Text size="xs" color="muted">280px fixed</Text>
+                  </Card>
+                </Grid>
+              </div>
+
+              {/* --- Auto-fill / Auto-fit --- */}
+              <div className="space-y-4">
+                <Text weight="medium">Auto-fill Card Grid</Text>
+                <Text size="sm" color="muted">
+                  <code>layout=&quot;auto-fill&quot;</code> — Cards wrap
+                  automatically, min 280px each. Resize the browser to see the
+                  reflow.
+                </Text>
+                <Grid layout="auto-fill" gap="md">
+                  {[1, 2, 3, 4, 5].map((n) => (
+                    <Card key={n} variant="interactive" padding="md">
+                      <CardHeader>
+                        <CardTitle>Card {n}</CardTitle>
+                        <CardDescription>Auto-fill item</CardDescription>
+                      </CardHeader>
+                    </Card>
+                  ))}
+                </Grid>
+              </div>
+
+              {/* --- 12-Column with GridItem --- */}
+              <div className="space-y-4">
+                <Text weight="medium">12-Column Grid with GridItem</Text>
+                <Text size="sm" color="muted">
+                  <code>layout=&quot;12-col&quot;</code> with{" "}
+                  <code>GridItem colSpan</code> for fine-grained control.
+                </Text>
+                <Grid layout="12-col" gap="sm">
+                  <GridItem colSpan={12}>
+                    <Card variant="outline" padding="sm">
+                      <Text size="xs" weight="medium" align="center">
+                        colSpan=12 (full width)
+                      </Text>
+                    </Card>
+                  </GridItem>
+                  <GridItem colSpan={8}>
+                    <Card variant="filled" padding="sm">
+                      <Text size="xs" weight="medium" align="center">
+                        colSpan=8
+                      </Text>
+                    </Card>
+                  </GridItem>
+                  <GridItem colSpan={4}>
+                    <Card variant="filled" padding="sm">
+                      <Text size="xs" weight="medium" align="center">
+                        colSpan=4
+                      </Text>
+                    </Card>
+                  </GridItem>
+                  <GridItem colSpan={4}>
+                    <Card variant="filled" padding="sm">
+                      <Text size="xs" weight="medium" align="center">
+                        colSpan=4
+                      </Text>
+                    </Card>
+                  </GridItem>
+                  <GridItem colSpan={4}>
+                    <Card variant="filled" padding="sm">
+                      <Text size="xs" weight="medium" align="center">
+                        colSpan=4
+                      </Text>
+                    </Card>
+                  </GridItem>
+                  <GridItem colSpan={4}>
+                    <Card variant="filled" padding="sm">
+                      <Text size="xs" weight="medium" align="center">
+                        colSpan=4
+                      </Text>
+                    </Card>
+                  </GridItem>
+                  <GridItem colSpan={6}>
+                    <Card variant="filled" padding="sm">
+                      <Text size="xs" weight="medium" align="center">
+                        colSpan=6
+                      </Text>
+                    </Card>
+                  </GridItem>
+                  <GridItem colSpan={6}>
+                    <Card variant="filled" padding="sm">
+                      <Text size="xs" weight="medium" align="center">
+                        colSpan=6
+                      </Text>
+                    </Card>
+                  </GridItem>
+                </Grid>
+              </div>
+
+              {/* --- Responsive Explicit Columns --- */}
+              <div className="space-y-4">
+                <Text weight="medium">Responsive Explicit Columns</Text>
+                <Text size="sm" color="muted">
+                  <code>cols=1 colsSm=2 colsLg=4</code> — Explicit per-breakpoint
+                  control. Resize to see 1 → 2 → 4 columns.
+                </Text>
+                <Grid cols={1} colsSm={2} colsLg={4} gap="md">
+                  {[1, 2, 3, 4].map((n) => (
+                    <Card key={n} variant="elevated" padding="md">
+                      <Text size="sm" weight="medium" align="center">
+                        Item {n}
+                      </Text>
+                    </Card>
+                  ))}
+                </Grid>
+              </div>
+
+              {/* --- Gap Sizes --- */}
+              <div className="space-y-4">
+                <Text weight="medium">Gap Sizes</Text>
+                <div className="space-y-3">
+                  {(["xs", "sm", "md", "lg", "xl"] as const).map((g) => (
+                    <div key={g}>
+                      <Text size="xs" color="muted" className="mb-1">
+                        gap=&quot;{g}&quot;
+                      </Text>
+                      <Grid layout="4-col" gap={g}>
+                        {[1, 2, 3, 4].map((n) => (
+                          <Card key={n} variant="filled" padding="sm">
+                            <Text size="xs" align="center">{n}</Text>
+                          </Card>
+                        ))}
+                      </Grid>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* --- Alignment --- */}
+              <div className="space-y-4">
+                <Text weight="medium">Vertical Alignment</Text>
+                <Text size="sm" color="muted">
+                  <code>align</code> controls how items sit within their cells.
+                </Text>
+                <Grid layout="3-col" gap="md" align="center" className="min-h-[120px]">
+                  <Card variant="filled" padding="sm">
+                    <Text size="xs">Short</Text>
+                  </Card>
+                  <Card variant="filled" padding="md">
+                    <Text size="xs">Medium height card with more content to show alignment.</Text>
+                  </Card>
+                  <Card variant="filled" padding="sm">
+                    <Text size="xs">Short</Text>
+                  </Card>
+                </Grid>
+              </div>
+
+              {/* --- Semantic Elements --- */}
+              <div className="space-y-4">
+                <Text weight="medium">Semantic Elements</Text>
+                <Text size="sm" color="muted">
+                  Use <code>as</code> to render the grid as any HTML element.
+                </Text>
+                <Grid as="section" layout="sidebar-left" gap="lg">
+                  <GridItem as="nav">
+                    <Card variant="outline" padding="md">
+                      <Text size="sm" weight="medium">nav element</Text>
+                    </Card>
+                  </GridItem>
+                  <GridItem as="article">
+                    <Card variant="filled" padding="md">
+                      <Text size="sm" weight="medium">article element</Text>
+                    </Card>
+                  </GridItem>
+                </Grid>
+              </div>
+            </div>
+          </AccordionContent>
         </AccordionItem>
 
         

@@ -17,3 +17,4 @@ export * from "./Placeholder";
 export * from "./Slider";
 export * from "./DropdownMenu";
 export * from "./Tooltip";
+export * from "./Grid";
