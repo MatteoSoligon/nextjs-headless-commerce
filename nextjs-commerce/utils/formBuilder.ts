@@ -1,7 +1,9 @@
 import { FieldConfig, FormConfigData, FormValues, ZodSchema } from "@/models/types/Form";
 import { z } from "zod";
 
- 
+/*
+* maintainer mode
+*/
 export const formBuilder = <T extends Record<string, unknown> = Record<string, unknown>>(fields: FieldConfig<T>[], t?: (key: string) => string) => {
 	const shape: Record<string, z.ZodTypeAny> = {};
 	const defaultValues: Partial<T> = {};
