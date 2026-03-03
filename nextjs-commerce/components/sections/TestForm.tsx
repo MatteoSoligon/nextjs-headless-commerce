@@ -1,9 +1,10 @@
 'use client';
 import { FC } from "react";
 import Form from "./Form";
-import formBuilder, { FieldConfig } from "@/utils/formBuilder";
+import formBuilder from "@/utils/formBuilder";
 import { z } from "zod"; 
 import { useTranslations } from "next-intl";
+import { FieldConfig } from "@/models/types/Form";
 
 const TestForm: FC = () => {
   const t = useTranslations("Errors");
@@ -18,9 +19,9 @@ const TestForm: FC = () => {
     {
       name: "sureName",
       type: "text",
-      zod: (tfn: (k: string) => string) => z.string().optional(),
+      zod: (tfn: (k: string) => string) => z.string().min(1, tfn("required")),
       default: "",
-      visible: (values) => values.firstName !== "John",
+      visible: (values) => values.firstName === "John",
 
     },
     {

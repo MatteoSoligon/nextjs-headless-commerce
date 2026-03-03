@@ -22,8 +22,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SelectGroup } from "@radix-ui/react-select";
 import { FC } from "react";
 
-import { FieldConfig, FormConfigData } from "@/utils/formBuilder";
 import DebouncedInput from "../blocks/DebouncedInput";
+import { FieldConfig, FormConfigData, ZodSchema } from "@/models/types/Form";
 
 
 const Form: FC<{ formConfigData: FormConfigData }> = ({ formConfigData }) => {
@@ -31,7 +31,7 @@ const Form: FC<{ formConfigData: FormConfigData }> = ({ formConfigData }) => {
   const { schema, defaultValues, fields } = formConfigData;
 
   const { control, handleSubmit, watch } = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schema as ZodSchema),
     defaultValues,
   });
 
