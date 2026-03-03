@@ -10,6 +10,8 @@ Always ask for clarification if unsure which mode applies to a given change. Bef
 **Trigger:** Activated when working on core/shared infrastructure code.
 
 **Applies to:**
+- `package.json` — dependency management
+- `next.config.ts` - Next.js configuration
 - `utils/` — shared utilities (e.g., `formBuilder.ts`)
 - `models/` — types, interfaces, schemas
 - `hooks/` — shared/reusable hooks

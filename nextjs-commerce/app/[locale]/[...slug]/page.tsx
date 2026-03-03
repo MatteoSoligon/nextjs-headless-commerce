@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { getAllPages, getPageBySlug } from "@/lib/cms";
+import { client, getAllPages, getPageBySlug } from "@/lib/clients/cms";
 import getMetadata from "@/lib/meta";
 
 type Props = {
@@ -25,7 +25,7 @@ export default async function CmsPage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);;
 
-  const page = await getPageBySlug(slug.join("/"), locale);
+  const page = await client.getPageBySlug(slug.join("/"), locale);
 
   if (!page) {
     notFound();

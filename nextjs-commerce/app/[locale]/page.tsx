@@ -5,7 +5,8 @@ import { getTranslations } from "next-intl/server";
 import { Suspense } from "react";
 import Slider from "@/components/atoms/Slider";
 import getMetadata from "@/lib/meta";
-import { getPageBySlug } from "@/lib/cms";
+import { client } from "@/lib/clients/cms";
+
 
 
 export async function generateMetadata({ params }: any) {
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: any) {
 export default async function Home({ params }: any) {
   const { locale } = await params;
   const t = await getTranslations("HomePage");
-  const pageData = await getPageBySlug('home', locale);
+  const pageData = await client.getPageBySlug('home', locale);
 
   const sliderItems = pageData.slides.map((item: any, i: number) => (
     <div key={item.id}>

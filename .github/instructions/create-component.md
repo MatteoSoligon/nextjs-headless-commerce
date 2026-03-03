@@ -1,3 +1,4 @@
+## Act in developer mode
 ## Rules to create a component in this project:
 - this project is a boilerplate that will be customized and fine implemented
 - keep things simple and extendable

@@ -1,5 +1,5 @@
 import { Container } from "@/components/atoms";
-import { getAllProducts, getProductData } from "@/lib/catalog";
+import { getAllProducts, client } from "@/lib/clients/catalog";
 import getMetadata from "@/lib/meta";
 
 
@@ -19,6 +19,6 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function ProductPage({ params }: Props) {
     const { id, locale } = await params;
-    const productData = await getProductData(id, locale);
+    const productData = await client.getProductData(id, locale);
     return <Container maxWidth="xl" py="lg">Product Page {productData?.title}</Container>;
 }
