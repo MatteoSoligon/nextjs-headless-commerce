@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import Slider from "@/components/atoms/Slider";
 import getMetadata from "@/lib/meta";
 import { client } from "@/lib/clients/cms";
+import { notFound } from "next/navigation";
 
 
 
@@ -18,6 +19,9 @@ export default async function Home({ params }: any) {
   const { locale } = await params;
   const t = await getTranslations("HomePage");
   const pageData = await client.getPageBySlug('home', locale);
+  if (!pageData) {
+    return notFound();
+  }
 
   const sliderItems = pageData.slides.map((item: any, i: number) => (
     <div key={item.id}>

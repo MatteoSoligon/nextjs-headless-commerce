@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { client, getAllPages, getPageBySlug } from "@/lib/clients/cms";
+import { client } from "@/lib/clients/cms";
 import getMetadata from "@/lib/meta";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 
 // Pre-generate known CMS pages at build time
 export async function generateStaticParams() {
-  const pages = await getAllPages();
+  const pages = await client.getAllPages();
   return pages
 }
 
