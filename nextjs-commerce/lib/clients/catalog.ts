@@ -1,3 +1,6 @@
+/**
+ * Maintainer mode
+ */
 import CatalogItemDataModel from "@/models/interfaces/catalog";
 import BaseClient from "./baseClient";
 
@@ -12,8 +15,7 @@ class CatalogClient extends BaseClient {
   }
 
   async getAllProducts() {
-    /* const res = await fetch(`${process.env.CMS_API_URL}/pages`);
-  if (!res.ok) return []; */
+    // TODO: Implement actual API call to fetch all products from your CMS
     return ["1", "2"];
   }
 }

@@ -1,16 +1,7 @@
-type BaseClientProps = {
-  basePath: string;
-  tag: string;
-  nextConfig?: NextFetchRequestConfig| undefined;
-}
-
-type Requestprops = {
-  query: string;
-  payload?: Record<string, any>;
-  options?: Record<string, any>;
-  method: "POST" | "GET" | "PUT" | "DELETE";
-  headers: Record<string, string>;
-}
+/**
+ * Maintainer mode
+ */
+import { BaseClientProps, Requestprops } from "@/models/types/Client";
 
 export default class BaseClient {
   lang = "en";
@@ -32,7 +23,7 @@ export default class BaseClient {
       method,
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
+        Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
         ...headers,
       },
       body: payload ? JSON.stringify(payload) : undefined,

@@ -1,3 +1,6 @@
+/**
+ * Maintainer mode
+ */
 // Adapt these functions to your CMS (Contentful, Sanity, Strapi, etc.)
 
 import PageDataModel, { PageData } from "@/models/interfaces/cms";
@@ -12,8 +15,7 @@ class CMSClient extends BaseClient {
     return PageDataModel(data, slug) ?? null;
   }
   async getAllPages() {
-    /* const res = await fetch(`${process.env.CMS_API_URL}/pages`);
-  if (!res.ok) return []; */
+    // TODO: Implement actual API call to fetch all pages from your CMS
     return ["product", "test"];
   }
 }
