@@ -56,12 +56,12 @@ export const routing = defineRouting({
  
     // Encoding of non-ASCII characters is handled
     // automatically where relevant
-    '/product': {
+    '/items': {
       de: '/produkte'
     },
  
     // Dynamic params are supported via square brackets
-    '/product/[id]': {
+    '/items/[id]': {
       de: '/produkte/[id]'
     },
  

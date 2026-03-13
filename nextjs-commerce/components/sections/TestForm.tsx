@@ -1,6 +1,6 @@
 'use client';
 import { FC } from "react";
-import Form from "./Form";
+import Form from "../atoms/Form/Form";
 import formBuilder from "@/utils/formBuilder";
 import { z } from "zod"; 
 import { useTranslations } from "next-intl";

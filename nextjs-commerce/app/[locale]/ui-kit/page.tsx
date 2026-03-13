@@ -1127,7 +1127,7 @@ export default async function UIKitPage() {
                   <code>GridItem colSpan</code> for fine-grained control.
                 </Text>
                 <Grid layout="12-col" gap="sm">
-                  <GridItem colSpan={12}>
+                  <GridItem colSpan={12}> 
                     <Card variant="outline" padding="sm">
                       <Text size="xs" weight="medium" align="center">
                         colSpan=12 (full width)
@@ -1482,7 +1482,7 @@ export default async function UIKitPage() {
           <AccordionTrigger>
             <div className="flex items-center gap-3">
               <Badge variant="success">Section</Badge>
-              <span className="font-semibold">Form</span>
+              <span className="font-semibold">Test Form</span>
             </div>
           </AccordionTrigger>
 

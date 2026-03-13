@@ -36,7 +36,7 @@ export default class BaseClient {
     let res: Response;
     try {
       res = await fetch(
-        `${process.env.CMS_API_URL}/${this.basePath}`,
+        `http://localhost:8000/${this.basePath}`,
         fetchOptions
       );
     } catch (err) {

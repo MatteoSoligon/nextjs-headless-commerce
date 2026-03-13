@@ -6,6 +6,7 @@ import { Roboto } from "next/font/google";
 import Header from "@/components/sections/Header";
 import Footer from "@/components/sections/Footer";
 import getMetadata from "@/lib/meta";
+import { Provider } from "jotai";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -41,11 +42,11 @@ export default async function LocaleLayout({ children, params }: Props) {
     <html lang={locale}>
       <body className={`${roboto.variable} antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <Header />
-          <main>
-            {children}
-          </main>
-          <Footer />
+          <Provider>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </Provider>
         </NextIntlClientProvider>
       </body>
     </html>

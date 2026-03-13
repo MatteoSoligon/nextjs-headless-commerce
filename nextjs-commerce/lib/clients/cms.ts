@@ -16,7 +16,7 @@ class CMSClient extends BaseClient {
   }
   async getAllPages() {
     // TODO: Implement actual API call to fetch all pages from your CMS
-    return ["product", "test"];
+    return ["item", "test"];
   }
 }
 

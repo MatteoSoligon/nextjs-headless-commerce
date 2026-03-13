@@ -6,16 +6,18 @@ const Header: FC = () => {
     return(
         <header className="bg-gray-800 text-white py-6">
             <Container maxWidth="xl" py="lg">
-                <h1 className="text-3xl font-bold">My E-commerce Store</h1>
+                <Link href={"/"} >
+                    <h1 className="text-3xl font-bold">My E-commerce Store</h1>
+                </Link>
                 <div>
                     <Button variant="link" className="mr-4" asChild>
                     <Link href={"/test" as any} >
-                        Test Page
+                        Editorial cms Page
                     </Link>
                     </Button>
                     <Button variant="link" className="mr-4" asChild>
-                    <Link href={"/product" as any} >
-                        Product Page
+                    <Link href={"/items/1" as any} >
+                        Listing page for category 1
                     </Link>
                     </Button>
                 </div>

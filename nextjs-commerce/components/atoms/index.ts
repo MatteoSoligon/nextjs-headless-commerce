@@ -19,3 +19,4 @@ export * from "./DropdownMenu";
 export * from "./Tooltip";
 export * from "./Grid";
 export * from "./Container";
+export * from "./Form";

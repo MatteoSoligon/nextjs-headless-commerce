@@ -22,7 +22,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SelectGroup } from "@radix-ui/react-select";
 import { FC } from "react";
 
-import DebouncedInput from "../blocks/DebouncedInput";
+import DebouncedInput from "../../blocks/DebouncedInput";
 import { FieldConfig, FormConfigData, ZodSchema } from "@/models/types/Form";
 
 
