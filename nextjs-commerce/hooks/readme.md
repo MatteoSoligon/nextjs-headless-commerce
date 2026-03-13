@@ -19,7 +19,7 @@ const fetchItems = async ({ filters, cursor, signal }: {
 
   return {
     items: data.items as Item[],
-    nextPage: data.nextPage as number | undefined,
+    page: data.page as number | undefined,
     hasMore: data.hasMore as boolean,
   };
 };
@@ -47,7 +47,7 @@ const fetchItems = async ({ filters, cursor, signal }) => {
 
   return {
     items: page.nodes,
-    nextPage: page.pageInfo.endCursor,
+    page: page.pageInfo.endCursor,
     hasMore: page.pageInfo.hasNextPage,
   };
 };

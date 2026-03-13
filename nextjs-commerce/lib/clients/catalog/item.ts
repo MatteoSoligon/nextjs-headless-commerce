@@ -4,7 +4,7 @@
 
 import { CatalogItemDataModel } from "@/models/models/catalog";
 import BaseClient from "../baseClient";
-import { CatalogItemData } from "@/models/interfaces/catalog";
+import { CatalogFilters, CatalogItemData } from "@/models/interfaces/catalog";
 import { ListingFetchResult } from "@/models/types/Listing";
 
 const ITEMS_PER_PAGE = 4; // Adjust as needed
@@ -22,8 +22,8 @@ class CatalogClient extends BaseClient {
 
   async getCatalogItems(
     locale: string,
-    options?: { page?: number; q?: string; filters?: Record<string, string | string[]>; getFromStart?: boolean },
-  ): Promise<ListingFetchResult<CatalogItemData, number>> {
+    options?: { page?: number; q?: string; filters?: CatalogFilters; getFromStart?: boolean },
+  ): Promise<ListingFetchResult<CatalogItemData, CatalogFilters, number>> {
     const data  = await this.request<any[]>({
       query: "/",
       method: "GET",
@@ -42,8 +42,9 @@ class CatalogClient extends BaseClient {
 
     return {
       items: filteredData.map((item) => CatalogItemDataModel(data, item.id)).slice(cursor.start, cursor.end), // Simple pagination logic, adjust as needed
-      nextPage: options?.page,
+      page: options?.page,
       hasMore: filteredData.length > cursor.end, // Simple heuristic, adjust as needed
+      filters: options?.filters,
     };
   }
 

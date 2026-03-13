@@ -28,35 +28,35 @@ const ListingList = ({
 
   const fetchItems = async ({
     filters,
-    cursor,
+    page,
     signal,
     getFromStart
   }: {
     filters: CatalogFilters;
-    cursor?: number;
+    page?: number;
     signal?: AbortSignal;
     getFromStart?: boolean;
-  }): Promise<ListingFetchResult<CatalogItemData, number>> => {
+  }): Promise<ListingFetchResult<CatalogItemData, CatalogFilters, number>> => {
     void signal;
 
     const data = await client.getCatalogItems("en", {
-      page: cursor,
+      page: page,
       filters: filters,
       getFromStart
     });
 
     return {
       items: data.items as CatalogItemData[],
-      nextPage: data?.nextPage as number | undefined,
+      page: data?.page as number | undefined,
       hasMore: data?.hasMore as boolean,
     };
   };
 
-  const { items, hasMore, fetchNextPage, fetchFiltered } =
+  const { items, hasMore, fetchNextPage, fetchFiltered, currentPage } =
     useListing<CatalogItemData, CatalogFilters>({
       initialItems,
       filters,
-      cursor: resolvedInitialPage,
+      page: resolvedInitialPage,
       fetchFunction: fetchItems,
       initialHasMore,
     });
@@ -76,7 +76,7 @@ const ListingList = ({
       <Grid layout="12-col" cols={1} colsMd={2} colsLg={4} gap="sm">
         {items.map((item) => (
           <GridItem key={item.id}>
-            <Link href={`/item/${item.id}`} passHref>
+            <Link href={`/item/${item.id}?from=${currentPage}`} passHref>
               <Card>
                 <CardHeader>
                   <CardTitle>{item.title}</CardTitle>
