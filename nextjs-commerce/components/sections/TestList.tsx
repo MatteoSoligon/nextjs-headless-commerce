@@ -5,19 +5,15 @@ import { Button, Grid, GridItem } from "../atoms";
 import { Card, CardDescription, CardHeader, CardTitle } from "../blocks";
 import { CatalogFilters, CatalogItemData } from "@/models/interfaces/catalog";
 import type {
-  ListingFetchContext,
-  ListingFetchResult,
-  PaginationData,
   ListingPageData,
 } from "@/models/types/Listing";
-import { client } from "@/lib/clients/catalog/item";
 import { useAtom } from "jotai";
 import { selectedFiltersAtom } from "@/store/jotai";
 import { useHydrateAtoms } from "jotai/utils";
-import { useCallback } from "react";
 import PaginatedList from "../blocks/PaginatedList";
+import useTestList from "@/hooks/useTestList";
 
-const ListingList = ({
+const TestList = ({
   initialItems,
   initialFilters,
   initialPaginationData,
@@ -31,77 +27,13 @@ const ListingList = ({
   const [rawFilters] = useAtom(selectedFiltersAtom);
   const filters = (rawFilters ?? {}) as CatalogFilters;
 
-  const setPaginationForFilter = (paginationData: PaginationData<number>) => ({
-    ...paginationData,
-    page: 1,
-    hasMore: true,
-  });
-
-  const setPaginationForNextPage = (
-    paginationData: PaginationData<number>,
-  ) => ({
-    ...paginationData,
-    page: (paginationData?.page ?? 0) + 1,
-  });
-
-  const updateSearchParmasFunction = useCallback(
-    ({
-      filters,
-      paginationData,
-    }: {
-      filters: CatalogFilters;
-      paginationData: PaginationData<number>;
-    }) => {
-      const params = new URLSearchParams(window.location.search);
-      const page = paginationData.page;
-
-      if (page === undefined || page === null) {
-        params.delete("page");
-      } else {
-        params.set("page", String(page));
-      }
-
-      const serializedFilters = JSON.stringify(filters ?? {});
-      if (serializedFilters === "{}") {
-        params.delete("filters");
-      } else {
-        params.set("filters", serializedFilters);
-      }
-
-      const nextQuery = params.toString();
-      const currentQuery = window.location.search.replace("?", "");
-
-      if (nextQuery === currentQuery) {
-        return;
-      }
-
-      const nextUrl = `${window.location.pathname}${nextQuery ? `?${nextQuery}` : ""}${window.location.hash}`;
-      window.history.pushState(null, "", nextUrl);
-    },
-    [],
-  );
-
-  // fetchItems is called by the PaginatedList component for loadmore or filter requests
-  // It defines the logic to call for loading items
-  const fetchItems = async ({
-    filters,
-    paginationData,
-    getFromStart,
-  }: ListingFetchContext<CatalogFilters, number>): Promise<
-    ListingFetchResult<CatalogItemData, CatalogFilters, number>
-  > => {
-    const data = await client.getCatalogItems("en", {
-      page: paginationData?.page,
-      filters,
-      getFromStart,
-    });
-
-    return {
-      items: data.items as CatalogItemData[],
-      paginationData: data.paginationData,
-    };
-  };
-
+  const {
+    updateSearchParmasFunction,
+    fetchItems,
+    setPaginationForFilter,
+    setPaginationForNextPage,
+  } = useTestList();
+  
   return (
     <PaginatedList
       initialItems={initialItems}
@@ -143,4 +75,4 @@ const ListingList = ({
   );
 };
 
-export default ListingList;
+export default TestList;

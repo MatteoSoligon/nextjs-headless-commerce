@@ -5,7 +5,7 @@ import {
 } from "@/models/interfaces/catalog";
 import type { ListingPageData } from "@/models/types/Listing";
 import ListingFilters from "../blocks/Filters/Filters";
-import ListingList from "../sections/ListingList";
+import TestList from "../sections/TestList";
 import { Container } from "../atoms";
 import { Suspense } from "react";
 
@@ -23,7 +23,7 @@ const ListingPage = async ({ categoryData, listingData }: Props) => {
         <ListingFilters />
       </Suspense>
       <Suspense>
-        <ListingList
+        <TestList
           initialItems={listingData.initialItems}
           initialFilters={listingData.initialFilters}
           initialPaginationData={listingData.initialPaginationData}

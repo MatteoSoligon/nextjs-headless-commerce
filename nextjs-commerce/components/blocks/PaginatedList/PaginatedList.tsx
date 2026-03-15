@@ -1,4 +1,4 @@
-import useListing from "@/hooks/useListing";
+import useListing from "@/hooks/core/useListing";
 import {
   DelegatedFetchFunction,
   ListingFetchResult,
