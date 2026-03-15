@@ -44,10 +44,10 @@ const ListingFilters = () => {
                     <Checkbox
                       id={`${filter.id}-${option}`}
                       checked={
-                        activeFilters[filter.id]?.includes(option) || false
+                        activeFilters?.[filter.id]?.includes(option) || false
                       }
                       onCheckedChange={() => {
-                        const currentOptions = activeFilters[filter.id] || [];
+                        const currentOptions = activeFilters?.[filter.id] || [];
                         if (currentOptions.includes(option)) {
                           setActiveFilters({
                             ...activeFilters,

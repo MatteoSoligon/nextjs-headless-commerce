@@ -2,15 +2,15 @@
 
 export interface ListingFetchContext<TFilters, TPage = number> {
   filters: TFilters;
-  page?: TPage;
   signal?: AbortSignal;
+  getFromStart?: boolean;
+  paginationData?: PaginationData<TPage>;
 }
 
 export interface ListingFetchResult<TItem, TFilters, TPage = number> {
   items: TItem[];
-  page?: TPage;
-  hasMore?: boolean;
   filters?: TFilters;
+  paginationData: PaginationData<TPage>;
 }
 
 export interface ListingPageData<
@@ -19,11 +19,26 @@ export interface ListingPageData<
   TPage = number,
 > {
   initialItems: TItem[];
-  initialPage?: TPage;
   initialFilters?: TFilters;
-  initialHasMore?: boolean;
+  initialPaginationData: PaginationData<TPage>;
 }
 
 export type ListingFetchFunction<TItem, TFilters, TPage = number> = (
   context: ListingFetchContext<TFilters, TPage>,
 ) => Promise<ListingFetchResult<TItem, TFilters, TPage>>;
+
+export type PaginationData<TPage = number> = {
+  page: TPage;
+  hasMore?: boolean;
+  [key: string]: unknown;
+}
+
+export type DelegatedFetchFunction<
+  TItem,
+  TFilters,
+  TPage = number,
+> = ListingFetchFunction<
+  TItem,
+  TFilters,
+  TPage
+>;

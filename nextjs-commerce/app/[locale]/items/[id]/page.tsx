@@ -25,14 +25,16 @@ export async function generateMetadata({ params }: Props) {
 export default async function ItemsPage({ params, searchParams }: Props) {
   const { locale, id } = await params;
   const { page, filters } = await searchParams;
-  const options = { page: parseInt(page || "1"), filters: filters ? JSON.parse(filters) : undefined, getFromStart: true };
+  const options = { page: parseInt(page || "1"), filters: filters ? JSON.parse(filters) : {color: []}, getFromStart: true };
   const categoryData = await client.getCategoryData(id, locale, options);
   const data = await itemsClient.getCatalogItems(locale, options);
   const listingData: ListingPageData<CatalogItemData, CatalogFilters, number> = {
     initialItems: data.items,
-    initialPage: options.page,
     initialFilters: options.filters,
-    initialHasMore: data.hasMore,
+    initialPaginationData: {
+      page: options.page,
+      hasMore: data.paginationData?.hasMore,
+    }
   };
 
   return (

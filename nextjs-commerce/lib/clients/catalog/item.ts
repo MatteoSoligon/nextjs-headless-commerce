@@ -19,31 +19,43 @@ class CatalogClient extends BaseClient {
     return CatalogItemDataModel(data, id) ?? null;
   }
 
-
   async getCatalogItems(
     locale: string,
-    options?: { page?: number; q?: string; filters?: CatalogFilters; getFromStart?: boolean },
+    options?: {
+      page?: number;
+      q?: string;
+      filters?: CatalogFilters;
+      getFromStart?: boolean;
+    },
   ): Promise<ListingFetchResult<CatalogItemData, CatalogFilters, number>> {
-    const data  = await this.request<any[]>({
+    const data = await this.request<any[]>({
       query: "/",
       method: "GET",
       headers: {},
     });
 
     const cursor = {
-      start: options?.getFromStart ? 0 : ITEMS_PER_PAGE * ((options?.page || 1) - 1),
+      start: options?.getFromStart
+        ? 0
+        : ITEMS_PER_PAGE * ((options?.page || 1) - 1),
       end: ITEMS_PER_PAGE * (options?.page || 1),
-    }
+    };
 
     const filteredData = data.filter((item) => {
-      return options?.filters?.color?.length ? options?.filters?.color.includes(item.color) : true
-    })
-
+      return options?.filters?.color?.length
+        ? options?.filters?.color.includes(item.color)
+        : true;
+    });
 
     return {
-      items: filteredData.map((item) => CatalogItemDataModel(data, item.id)).slice(cursor.start, cursor.end), // Simple pagination logic, adjust as needed
-      page: options?.page,
-      hasMore: filteredData.length > cursor.end, // Simple heuristic, adjust as needed
+      items: filteredData
+        .map((item) => CatalogItemDataModel(data, item.id))
+        .slice(cursor.start, cursor.end), // Simple pagination logic, adjust as needed
+      paginationData: {
+        page: options?.page || 1,
+        hasMore: filteredData.length > cursor.end, // Simple heuristic, adjust as needed
+      },
+
       filters: options?.filters,
     };
   }

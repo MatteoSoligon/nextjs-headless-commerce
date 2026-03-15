@@ -1,4 +1,8 @@
-import { CatalogCategoryData, CatalogFilters, CatalogItemData } from "@/models/interfaces/catalog";
+import {
+  CatalogCategoryData,
+  CatalogFilters,
+  CatalogItemData,
+} from "@/models/interfaces/catalog";
 import type { ListingPageData } from "@/models/types/Listing";
 import ListingFilters from "../blocks/Filters/Filters";
 import ListingList from "../sections/ListingList";
@@ -10,10 +14,7 @@ interface Props {
   listingData: ListingPageData<CatalogItemData, CatalogFilters, number>;
 }
 
-const ListingPage = async ({
-  categoryData,
-  listingData,
-}: Props) => {
+const ListingPage = async ({ categoryData, listingData }: Props) => {
   return (
     <Container maxWidth="xl" py="lg">
       <h1>{categoryData.title}</h1>
@@ -24,9 +25,8 @@ const ListingPage = async ({
       <Suspense>
         <ListingList
           initialItems={listingData.initialItems}
-          initialPage={listingData.initialPage}
           initialFilters={listingData.initialFilters}
-          initialHasMore={listingData.initialHasMore}
+          initialPaginationData={listingData.initialPaginationData}
         />
       </Suspense>
     </Container>

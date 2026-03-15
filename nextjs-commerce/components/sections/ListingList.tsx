@@ -3,96 +3,144 @@
 import Link from "next/link";
 import { Button, Grid, GridItem } from "../atoms";
 import { Card, CardDescription, CardHeader, CardTitle } from "../blocks";
-import useListing from "@/hooks/useListing";
 import { CatalogFilters, CatalogItemData } from "@/models/interfaces/catalog";
-import type { ListingFetchResult, ListingPageData } from "@/models/types/Listing";
+import type {
+  ListingFetchContext,
+  ListingFetchResult,
+  PaginationData,
+  ListingPageData,
+} from "@/models/types/Listing";
 import { client } from "@/lib/clients/catalog/item";
 import { useAtom } from "jotai";
 import { selectedFiltersAtom } from "@/store/jotai";
-import { useEffect, useRef } from "react";
-import { useHydrateAtoms } from 'jotai/utils'
-
+import { useHydrateAtoms } from "jotai/utils";
+import { useCallback } from "react";
+import PaginatedList from "../blocks/PaginatedList";
 
 const ListingList = ({
   initialItems,
-  initialPage,
   initialFilters,
-  initialHasMore = true,
+  initialPaginationData,
 }: ListingPageData<CatalogItemData, CatalogFilters, number>) => {
-  const resolvedInitialPage = initialPage ?? 1;
-  const resolvedInitialFilters = initialFilters ?? {};
+  const hydratedFilters =
+    (initialFilters as Record<string, unknown[]>) ?? { color: [] };
 
-  useHydrateAtoms([[selectedFiltersAtom, resolvedInitialFilters]]); // Initialize filters atom with default empty filters
-  const [filters] = useAtom(selectedFiltersAtom);
-  const isInitialFilterEffect = useRef(true);
+  // Initialize filters atom with default empty filters
+  // keep it global to access it from other components and to persist filter state across navigations
+  useHydrateAtoms([[selectedFiltersAtom, hydratedFilters]] as const);
+  const [rawFilters] = useAtom(selectedFiltersAtom);
+  const filters = (rawFilters ?? {}) as CatalogFilters;
 
+  const setPaginationForFilter = (paginationData: PaginationData<number>) => ({
+    ...paginationData,
+    page: 1,
+    hasMore: true,
+  });
+
+  const setPaginationForNextPage = (
+    paginationData: PaginationData<number>,
+  ) => ({
+    ...paginationData,
+    page: (paginationData?.page ?? 0) + 1,
+  });
+
+  const updateSearchParmasFunction = useCallback(
+    ({
+      filters,
+      paginationData,
+    }: {
+      filters: CatalogFilters;
+      paginationData: PaginationData<number>;
+    }) => {
+      const params = new URLSearchParams(window.location.search);
+      const page = paginationData.page;
+
+      if (page === undefined || page === null) {
+        params.delete("page");
+      } else {
+        params.set("page", String(page));
+      }
+
+      const serializedFilters = JSON.stringify(filters ?? {});
+      if (serializedFilters === "{}") {
+        params.delete("filters");
+      } else {
+        params.set("filters", serializedFilters);
+      }
+
+      const nextQuery = params.toString();
+      const currentQuery = window.location.search.replace("?", "");
+
+      if (nextQuery === currentQuery) {
+        return;
+      }
+
+      const nextUrl = `${window.location.pathname}${nextQuery ? `?${nextQuery}` : ""}${window.location.hash}`;
+      window.history.pushState(null, "", nextUrl);
+    },
+    [],
+  );
+
+  // fetchItems is called by the PaginatedList component for loadmore or filter requests
+  // It defines the logic to call for loading items
   const fetchItems = async ({
     filters,
-    page,
-    signal,
-    getFromStart
-  }: {
-    filters: CatalogFilters;
-    page?: number;
-    signal?: AbortSignal;
-    getFromStart?: boolean;
-  }): Promise<ListingFetchResult<CatalogItemData, CatalogFilters, number>> => {
-    void signal;
-
+    paginationData,
+    getFromStart,
+  }: ListingFetchContext<CatalogFilters, number>): Promise<
+    ListingFetchResult<CatalogItemData, CatalogFilters, number>
+  > => {
     const data = await client.getCatalogItems("en", {
-      page: page,
-      filters: filters,
-      getFromStart
+      page: paginationData?.page,
+      filters,
+      getFromStart,
     });
 
     return {
       items: data.items as CatalogItemData[],
-      page: data?.page as number | undefined,
-      hasMore: data?.hasMore as boolean,
+      paginationData: data.paginationData,
     };
   };
 
-  const { items, hasMore, fetchNextPage, fetchFiltered, currentPage } =
-    useListing<CatalogItemData, CatalogFilters>({
-      initialItems,
-      filters,
-      page: resolvedInitialPage,
-      fetchFunction: fetchItems,
-      initialHasMore,
-    });
-
-  useEffect(() => {
-    // Skip the effect on the initial render to avoid refetching with default filters
-    if (isInitialFilterEffect.current) {
-      isInitialFilterEffect.current = false;
-      return;
-    }
-
-    fetchFiltered();
-  }, [filters]);
-  
   return (
-    <div>
-      <Grid layout="12-col" cols={1} colsMd={2} colsLg={4} gap="sm">
-        {items.map((item) => (
-          <GridItem key={item.id}>
-            <Link href={`/item/${item.id}?from=${currentPage}`} passHref>
-              <Card>
-                <CardHeader>
-                  <CardTitle>{item.title}</CardTitle>
-                  <CardDescription>{item.description}
-                    - {item.color} - {item.size} - {item.brand}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            </Link>
-          </GridItem>
-        ))}
-      </Grid>
-      {hasMore && <Button onClick={fetchNextPage}>Load more</Button>}
-    </div>
+    <PaginatedList
+      initialItems={initialItems}
+      filters={filters}
+      fetchFunction={fetchItems}
+      initialPaginationData={initialPaginationData}
+      updateSearchParmasFunction={updateSearchParmasFunction}
+      setPaginationForFilter={setPaginationForFilter}
+      setPaginationForNextPage={setPaginationForNextPage}
+    >
+      {({ items, fetchNextPage, paginationData }) => (
+        <div>
+          <Grid layout="12-col" cols={1} colsMd={2} colsLg={4} gap="sm">
+            {items.map((item) => (
+              <GridItem key={item.id}>
+                <Link
+                  href={`/item/${item.id}?from=${paginationData?.page}`}
+                  passHref
+                >
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>{item.title}</CardTitle>
+                      <CardDescription>
+                        {item.description}- {item.color} - {item.size} -{" "}
+                        {item.brand}
+                      </CardDescription>
+                    </CardHeader>
+                  </Card>
+                </Link>
+              </GridItem>
+            ))}
+          </Grid>
+          {paginationData?.hasMore && (
+            <Button onClick={fetchNextPage}>Load more</Button>
+          )}
+        </div>
+      )}
+    </PaginatedList>
   );
 };
 
 export default ListingList;
-
